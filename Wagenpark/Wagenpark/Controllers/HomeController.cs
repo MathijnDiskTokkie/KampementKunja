@@ -10,6 +10,7 @@ namespace Wagenpark.Controllers
     {
         public ActionResult Index()
         {
+            // inlogpagina
             return View();
         }
 

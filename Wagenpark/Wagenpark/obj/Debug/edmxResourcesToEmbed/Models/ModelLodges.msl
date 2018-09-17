@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KampementKunjaModel1StoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Lodges">
+      <EntityTypeMapping TypeName="KampementKunjaModel1.Lodges">
+        <MappingFragment StoreEntitySet="Lodges">
+          <ScalarProperty Name="LodgeID" ColumnName="LodgeID" />
+          <ScalarProperty Name="LodgeTypeID" ColumnName="LodgeTypeID" />
+          <ScalarProperty Name="LodgeNR" ColumnName="LodgeNR" />
+          <ScalarProperty Name="LodgeNaam" ColumnName="LodgeNaam" />
+          <ScalarProperty Name="Bezettingsgraad" ColumnName="Bezettingsgraad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

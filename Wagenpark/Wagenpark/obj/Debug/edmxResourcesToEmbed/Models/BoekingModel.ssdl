@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KampementKunjaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="boeking">
+    <Key>
+      <PropertyRef Name="boekingID" />
+    </Key>
+    <Property Name="boekingID" Type="int" Nullable="false" />
+    <Property Name="gastID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="reservering">
+    <Key>
+      <PropertyRef Name="reserveringID" />
+    </Key>
+    <Property Name="reserveringID" Type="int" Nullable="false" />
+    <Property Name="lodgeID" Type="int" Nullable="false" />
+    <Property Name="boekingID" Type="int" Nullable="false" />
+    <Property Name="incheckDatum" Type="datetime" Nullable="false" />
+    <Property Name="uitcheckDatum" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="reservering_boeking_FK">
+    <End Role="boeking" Type="Self.boeking" Multiplicity="1" />
+    <End Role="reservering" Type="Self.reservering" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="boeking">
+        <PropertyRef Name="boekingID" />
+      </Principal>
+      <Dependent Role="reservering">
+        <PropertyRef Name="boekingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KampementKunjaModelStoreContainer">
+    <EntitySet Name="boeking" EntityType="Self.boeking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reservering" EntityType="Self.reservering" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="reservering_boeking_FK" Association="Self.reservering_boeking_FK">
+      <End Role="boeking" EntitySet="boeking" />
+      <End Role="reservering" EntitySet="reservering" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

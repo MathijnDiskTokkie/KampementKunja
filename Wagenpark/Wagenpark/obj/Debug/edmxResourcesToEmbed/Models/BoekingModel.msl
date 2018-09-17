@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KampementKunjaModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="boeking">
+      <EntityTypeMapping TypeName="KampementKunjaModel.boeking">
+        <MappingFragment StoreEntitySet="boeking">
+          <ScalarProperty Name="boekingID" ColumnName="boekingID" />
+          <ScalarProperty Name="gastID" ColumnName="gastID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reservering">
+      <EntityTypeMapping TypeName="KampementKunjaModel.reservering">
+        <MappingFragment StoreEntitySet="reservering">
+          <ScalarProperty Name="reserveringID" ColumnName="reserveringID" />
+          <ScalarProperty Name="lodgeID" ColumnName="lodgeID" />
+          <ScalarProperty Name="boekingID" ColumnName="boekingID" />
+          <ScalarProperty Name="incheckDatum" ColumnName="incheckDatum" />
+          <ScalarProperty Name="uitcheckDatum" ColumnName="uitcheckDatum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

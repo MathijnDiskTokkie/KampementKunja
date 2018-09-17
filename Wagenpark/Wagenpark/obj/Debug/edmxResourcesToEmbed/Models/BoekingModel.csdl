@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KampementKunjaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="boeking">
+    <Key>
+      <PropertyRef Name="boekingID" />
+    </Key>
+    <Property Name="boekingID" Type="Int32" Nullable="false" />
+    <Property Name="gastID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="reservering" Relationship="Self.reservering_boeking_FK" FromRole="boeking" ToRole="reservering" />
+  </EntityType>
+  <EntityType Name="reservering">
+    <Key>
+      <PropertyRef Name="reserveringID" />
+    </Key>
+    <Property Name="reserveringID" Type="Int32" Nullable="false" />
+    <Property Name="lodgeID" Type="Int32" Nullable="false" />
+    <Property Name="boekingID" Type="Int32" Nullable="false" />
+    <Property Name="incheckDatum" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="uitcheckDatum" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="boeking" Relationship="Self.reservering_boeking_FK" FromRole="reservering" ToRole="boeking" />
+  </EntityType>
+  <Association Name="reservering_boeking_FK">
+    <End Role="boeking" Type="Self.boeking" Multiplicity="1" />
+    <End Role="reservering" Type="Self.reservering" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="boeking">
+        <PropertyRef Name="boekingID" />
+      </Principal>
+      <Dependent Role="reservering">
+        <PropertyRef Name="boekingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="boeking" EntityType="Self.boeking" />
+    <EntitySet Name="reservering" EntityType="Self.reservering" />
+    <AssociationSet Name="reservering_boeking_FK" Association="Self.reservering_boeking_FK">
+      <End Role="boeking" EntitySet="boeking" />
+      <End Role="reservering" EntitySet="reservering" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

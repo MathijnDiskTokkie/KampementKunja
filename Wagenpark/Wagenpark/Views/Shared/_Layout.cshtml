@@ -25,6 +25,13 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Role Manager", "Index", "Roles")</li>
+                    <li>@Html.ActionLink("Mijn boekingen", "Index", "MijnBoeking")</li>
+
+                    @if (User.IsInRole("Manager"))
+                    {
+                        <li>@Html.ActionLink("Boekingen", "Index", "Boekingen")</li>
+                    }
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
