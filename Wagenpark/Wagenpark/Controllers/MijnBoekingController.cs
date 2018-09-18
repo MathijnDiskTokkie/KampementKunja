@@ -32,12 +32,9 @@ namespace Wagenpark.Controllers
 
         public ActionResult Boeken() {
 
+            var beschikbaar = from i in db.Lodges where i.Bezettingsgraad == true select i;
 
-
-
-
-
-            return View();
+            return View(beschikbaar.ToList());
         }
 
         public ActionResult BoekingBevestigen() {
