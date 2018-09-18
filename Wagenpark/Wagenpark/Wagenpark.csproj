@@ -350,9 +350,13 @@
     <Content Include="Views\MijnBoeking\Boeken.cshtml" />
     <Content Include="Views\MijnBoeking\BoekingBevestigen.cshtml" />
     <Content Include="Views\MijnBoeking\EmailBevestigen.cshtml" />
-    <Content Include="Views\Boekingen\Index.cshtml" />
     <Content Include="Views\Lodge\Index.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
+    <Content Include="Views\Boekingen\Create.cshtml" />
+    <Content Include="Views\Boekingen\Delete.cshtml" />
+    <Content Include="Views\Boekingen\Details.cshtml" />
+    <Content Include="Views\Boekingen\Edit.cshtml" />
+    <Content Include="Views\Boekingen\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
