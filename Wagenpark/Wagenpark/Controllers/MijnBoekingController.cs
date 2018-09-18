@@ -18,14 +18,25 @@ namespace Wagenpark.Controllers
         // GET: Boeking
         public ActionResult Index()
         {
-            MijnProfiel ass = new MijnProfiel();
+            var gebruikerid = from a in db.Gasten where a.Email == User.Identity.Name select a.GastenID;
+
+            var boekingen = from i in db.Boekingen where i.gastID == gebruikerid.FirstOrDefault() select i;
+
+            MijnProfiel profiel = new MijnProfiel();
+            profiel.boekingen = boekingen.ToList();
+            profiel.gast = (from d in db.Gasten where d.Email == User.Identity.Name select d).FirstOrDefault();
            
             
-
-            return View();
+            return View(profiel);
         }
 
         public ActionResult Boeken() {
+
+
+
+
+
+
             return View();
         }
 
