@@ -12,24 +12,18 @@ namespace Wagenpark.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Gasten
+    public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Gasten()
+        public Role()
         {
-            this.Boekingen = new HashSet<Boekingen>();
+            this.User = new HashSet<User>();
         }
     
-        public int GastenID { get; set; }
-        public string Voornaam { get; set; }
-        public string Achternaam { get; set; }
-        public string Adres { get; set; }
-        public string Woonplaats { get; set; }
-        public string Postcode { get; set; }
-        public string telNr { get; set; }
-        public string Email { get; set; }
+        public string RoleId { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Boekingen> Boekingen { get; set; }
+        public virtual ICollection<User> User { get; set; }
     }
 }

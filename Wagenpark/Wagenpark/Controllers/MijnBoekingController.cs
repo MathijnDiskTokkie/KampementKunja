@@ -12,11 +12,16 @@ namespace Wagenpark.Controllers
 
         
         ApplicationDbContext dbuser = new ApplicationDbContext();
+        KunjaDBConnection db = new KunjaDBConnection();        
        
 
         // GET: Boeking
         public ActionResult Index()
         {
+            MijnProfiel ass = new MijnProfiel();
+           
+            
+
             return View();
         }
 
