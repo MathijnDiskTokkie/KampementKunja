@@ -79,6 +79,30 @@ namespace Wagenpark.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Voornaam")]
+        public string Voornaam { get; set; }
+
+        [Required]
+        [Display(Name = "Achternaam")]
+        public string Achternaam { get; set; }
+
+        [Required]
+        [Display(Name = "Adres")]
+        public string Adres { get; set; }
+
+        [Required]
+        [Display(Name = "Woonplaats")]
+        public string Woonplaats { get; set; }
+
+        [Required]
+        [Display(Name = "Postcode")]
+        public string Postcode { get; set; }
+
+        [Required]
+        [Display(Name = "Telefoonnummer")]
+        public string TelNr { get; set; }
     }
 
     public class ResetPasswordViewModel

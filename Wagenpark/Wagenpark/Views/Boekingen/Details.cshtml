@@ -1,0 +1,50 @@
+﻿@model Wagenpark.Models.Boekingen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Boekingen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.gastID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gastID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lodgeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lodgeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.incheckdatum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.incheckdatum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uitcheckdatum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uitcheckdatum)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Boekingid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

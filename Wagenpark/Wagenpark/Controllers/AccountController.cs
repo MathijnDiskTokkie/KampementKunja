@@ -17,6 +17,7 @@ namespace Wagenpark.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        RegisterDB GastenDB = new RegisterDB();
 
         public AccountController()
         {
@@ -155,6 +156,20 @@ namespace Wagenpark.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    Gasten gasten = new Gasten();
+                    gasten.Voornaam = model.Voornaam;
+                    gasten.Achternaam = model.Achternaam;
+                    gasten.Adres = model.Adres;
+                    gasten.Woonplaats = model.Woonplaats;
+                    gasten.Postcode = model.Postcode;
+                    gasten.telNr = model.TelNr;
+                    gasten.Email = model.Email;
+
+                    GastenDB.Gasten.Add(gasten);
+                    GastenDB.SaveChanges();
+
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
