@@ -23,11 +23,4 @@ textarea {
     max-width: 280px;
 }
 
-.nav {
-    height: 40px;
-    width: auto;
-    height: 40px;
-    width: auto;
-    position: fixed;
-    z-index: 100;
-}
+
