@@ -17,11 +17,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-               <img style="height: 50px;" src="@Url.Content("~/Content/Images/logo.png")" />
+<<<<<<< HEAD
+                <img style="height: 50px;" src="@Url.Content("~/Content/Images/logo.png")" />
+=======
+>>>>>>> 00439e24e5e924da84f0e4f67dbb4569297de372
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Role Manager", "Index", "Roles")</li>
@@ -37,6 +40,7 @@
             </div>
         </div>
     </div>
+   
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -45,8 +49,11 @@
         </footer>
     </div>
 
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
 </body>
 </html>

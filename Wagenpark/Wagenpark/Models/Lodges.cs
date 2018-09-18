@@ -12,24 +12,22 @@ namespace Wagenpark.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Gasten
+    public partial class Lodges
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Gasten()
+        public Lodges()
         {
             this.Boekingen = new HashSet<Boekingen>();
         }
     
-        public int GastenID { get; set; }
-        public string Voornaam { get; set; }
-        public string Achternaam { get; set; }
-        public string Adres { get; set; }
-        public string Woonplaats { get; set; }
-        public string Postcode { get; set; }
-        public string telNr { get; set; }
-        public string Email { get; set; }
+        public int LodgeID { get; set; }
+        public int LodgeTypeID { get; set; }
+        public int LodgeNR { get; set; }
+        public string LodgeNaam { get; set; }
+        public bool Bezettingsgraad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Boekingen> Boekingen { get; set; }
+        public virtual LodgeTypes LodgeTypes { get; set; }
     }
 }
