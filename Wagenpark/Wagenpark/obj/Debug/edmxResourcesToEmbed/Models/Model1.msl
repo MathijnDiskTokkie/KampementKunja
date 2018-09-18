@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KampementKunjaModel1StoreContainer" CdmEntityContainer="RegisterDB">
+    <EntitySetMapping Name="Gasten">
+      <EntityTypeMapping TypeName="KampementKunjaModel1.Gasten">
+        <MappingFragment StoreEntitySet="Gasten">
+          <ScalarProperty Name="GastenID" ColumnName="GastenID" />
+          <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
+          <ScalarProperty Name="Achternaam" ColumnName="Achternaam" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="Woonplaats" ColumnName="Woonplaats" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+          <ScalarProperty Name="telNr" ColumnName="telNr" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
