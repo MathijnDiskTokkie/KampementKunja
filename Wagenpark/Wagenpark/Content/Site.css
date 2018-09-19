@@ -5,6 +5,11 @@
     background-size: cover;
 }
 
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: transparent !important;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -17,6 +22,7 @@
 .dl-horizontal dt {
     white-space: normal;
 }
+
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
@@ -44,6 +50,8 @@ td {
     font-weight: bold;
     
    } 
+
+
 
 
 
