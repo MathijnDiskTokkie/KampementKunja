@@ -48,7 +48,10 @@ namespace Wagenpark.Controllers
             return View(boek);
         }
 
-        public ActionResult EmailBevestigen() {
+        public ActionResult EmailBevestigen(int id) {
+
+            //id is lodgetype
+
 
             return View();
         }
