@@ -1,7 +1,154 @@
-﻿
+﻿@model Wagenpark.Models.BoekingBevestigen
+
+
+
 @{
     ViewBag.Title = "BoekingBevestigen";
 }
 
-<h2>BoekingBevestigen</h2>
+<body style="">
+
+
+    <div class="row">
+
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4" style="background-color: #fff; height: 520px; width: 27%;
+border-radius: 20px; margin: auto;  padding: 0; margin-left: 20px; margin-top: 20px; margin-bottom: 20px;">
+
+            <div style="height: 22%;  border-top-left-radius: 20px;
+border-top-right-radius: 20px;">
+
+                <img src="~/Content/Images/Bevestiging.jpg" style="background-size: cover; height: 100%; width: 100%;
+border-top-right-radius: 20px; border-top-left-radius: 20px;">
+
+            </div>
+
+
+            <div style="height: 65%; background-color: #fff;">
+
+
+                <table style=" margin-top: 15px; width: 100% !important; margin-right: 25px; margin-left: 25px;">
+
+                    <tr>
+
+                        <td><h5 style="font-family: Comic Sans MS;">UW BOEKING BIJ KUNJA:</h5></td>
+
+                    </tr>
+                    <tr>
+
+                        <td><h5 style="font-family: Comic Sans MS;">@Model.aantalnachten nacht(en)</h5></td>
+
+
+</tr>
+
+<tr>
+
+
+<td>
+
+    <h5 style="font-family: Comic Sans MS;">
+        @Model.Datumvanaf -<br />
+        @Model.Datumtot
+    </h5>
+
+</td>
+
+
+</tr>
+
+<tr>
+
+
+<td>
+
+<h5 style="font-family: Comic Sans MS;">
+ @Model.lodge.aantalpersonen kamers
+</h5>
+
+</td>
+
+
+</tr>
+
+<tr>
+
+
+<td>
+
+
+<hr style="margin-left: -25px; border: 0; border-top: 1px solid #808080; margin-right:25px" />
+
+
+<div class="row">
+
+                                <div class="col-sm-6">
+
+
+
+                                    <h5 style="font-family: Comic Sans MS;">
+                                        @Model.lodge.LodgeTypeNaam.ToUpper().Replace("\n","")
+                                    </h5>
+                                    <h5 style="font-family: Comic Sans MS; padding-top: 10px;">
+                                        Toeristen belasting
+                                    </h5>
+
+                                </div>
+                                <div class="col-sm-6">
+
+                                    <h5 style="font-family: Comic Sans MS; float: right; margin-right: 40px;">
+                                        €@Model.lodge.prijs.ToString() 
+                                    </h5>
+                                    <h5 style="font-family: Comic Sans MS; float: right; margin-right: 40px;">
+                                        €0,54
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <hr style="margin-left: -25px;  border: 0; border-top: 1px solid #808080; margin-right:25px;" />
+
+                        </td>
+
+                    </tr>
+                </table>
+
+                <div style="margin-top: -10px;">
+
+                    <h5 style="font-family: Comic Sans MS; color:black; font-weight: bold; float: left; text-align:left; margin-left: 25px;">
+                        TOTAAL:
+                    </h5>
+                    <h5 style="font-family: Comic Sans MS; color:black; font-weight: bold; float:right; text-align: right; margin-right: 15px;">
+                        €@Model.lodge.prijs.ToString()
+                    </h5>
+
+                </div>
+                
+                    
+                
+
+
+
+
+            </div>
+
+            <button class="button" style="width: 100%; height: 12%; bottom: 0; background-color: #378452;
+border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: #fff; border: 0;">
+                <h4 style="font-family: 'Comic Sans MS'">Boeking bevestigen</h4>
+            </button>
+
+
+
+        </div>
+        <div class="col-sm-4">
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>
+
 
