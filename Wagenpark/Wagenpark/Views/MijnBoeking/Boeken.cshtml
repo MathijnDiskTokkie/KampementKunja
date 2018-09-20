@@ -10,8 +10,60 @@
 
 <h2>Welke Lodge wilt u boeken?</h2>
 <div class="col-sm-4">
+<<<<<<< HEAD
     Copy
     <form>
+=======
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.BoekingID, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.BoekingID, new { @class = "form-control" })
+            </div>
+        </div>
+<<<<<<< HEAD
+
+        <div class="col-sm-7">
+
+           
+
+
+=======
+        <div class="form-group">
+            @Html.LabelFor(m => m.GastID, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Voornaam, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Voornaam, new { @class = "form-control" })
+            </div>
+>>>>>>> cc07b75c605a1dff676b3511babc3557206165bd
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Achternaam, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Achternaam, new { @class = "form-control" })
+            </div>
+        </div>
+
+>>>>>>> 00ea13d55b5f07c882f0391fb91134e65214cdf2
         <div class="form-group">
             <label for="formGroupExampleInput">Example label</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
