@@ -1,37 +1,132 @@
-﻿@model List<Wagenpark.Models.Lodges>
-
-
-<div class="container">
-
-    <div class="row">
-
-        <div class="col-sm-5">
+﻿@model List<Wagenpark.Models.Lodges> List<Wagenpark.Models.Boekingen>
 
 
 
 
 
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Welke Lodge wilt u boeken?</h2>
+<div class="col-sm-4">
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.BoekingID, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.BoekingID, new { @class = "form-control" })
+            </div>
         </div>
+<<<<<<< HEAD
 
         <div class="col-sm-7">
 
            
 
 
+=======
+        <div class="form-group">
+            @Html.LabelFor(m => m.GastID, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Voornaam, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Voornaam, new { @class = "form-control" })
+            </div>
+>>>>>>> cc07b75c605a1dff676b3511babc3557206165bd
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(m => m.Achternaam, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Achternaam, new { @class = "form-control" })
+            </div>
+        </div>
 
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Adres, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Adres, new { @class = "form-control" })
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(m => m.Woonplaats, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Woonplaats, new { @class = "form-control" })
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(m => m.Postcode, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Postcode, new { @class = "form-control" })
+            </div>
+        </div>
 
-</div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.TelNr, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.TelNr, new { @class = "form-control" })
+            </div>
+        </div>
 
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
+        </div>
+    }
+    </
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table" style="background-color: #fff">
 
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LodgeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LodgeTypeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LodgeNaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LodgeNR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bezettingsgraad)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.LodgeID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.LodgeID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.LodgeID })
+                </td>
+            </tr>
+        }
 
-@{
-    ViewBag.Title = "Boeken";
-}
-
-<h2>Boeken</h2>
+    </table>
 
