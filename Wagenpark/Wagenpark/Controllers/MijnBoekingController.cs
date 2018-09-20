@@ -32,14 +32,20 @@ namespace Wagenpark.Controllers
 
         public ActionResult Boeken() {
 
-            var beschikbaar = from i in db.Lodges where i.Bezettingsgraad == true select i;
+            List<LodgeTypes> lodgeTypes = new List<LodgeTypes>();
 
-            return View(beschikbaar.ToList());
+            lodgeTypes = (from i in db.Lodges where i.Bezettingsgraad == true select i.LodgeTypes).Distinct().ToList();
+
+            return View(lodgeTypes);
         }
 
         public ActionResult BoekingBevestigen() {
 
-            return View();
+            Wagenpark.Models.BoekingBevestigen boek = new Wagenpark.Models.BoekingBevestigen();
+            boek.boeking = (from i in db.Boekingen select i).FirstOrDefault();
+            boek.lodge = (from i in db.LodgeTypes select i).FirstOrDefault();
+
+            return View(boek);
         }
 
         public ActionResult EmailBevestigen() {
