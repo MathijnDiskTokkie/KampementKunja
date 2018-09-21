@@ -1,6 +1,18 @@
 ﻿@model List<Wagenpark.Models.LodgeTypes> 
 
+<body>
+    
 
+     <style>
+         body {
+             background-image: url('../../Content/Images/Background.png');
+             background-size: cover;
+         }
+
+         .btn-danger{
+             
+         }
+     </style>
 
 
 
@@ -14,14 +26,14 @@
     <fieldset>
         <h2>Kies de begin en einddatum</h2>
 
-        <div>
+        <div id="Startdatum">
             <label for="start">Start</label>
             <input type="date" id="start" name="trip"
                    value="2018-07-22"
                    min="2018-01-01" max="2018-12-31" />
         </div>
 
-        <div>
+        <div id="Einddatum">
             <label for="end">End</label>
             <input type="date" id="end" name="trip"
                    value="2018-07-29"
@@ -29,6 +41,10 @@
         </div>
 
     </fieldset>
+    <a href="@Url.Action("Boeken","MijnBoeking", new { incheckdatum = "", uitcheckdatum = "" })" class="btn-danger" id="Zoekbeschikbaarheid" type="submit">
+        
+
+    </a>
 </div>
 
   <style>
@@ -97,3 +113,4 @@
     
 
 
+    </body>
