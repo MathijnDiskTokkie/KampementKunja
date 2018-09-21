@@ -220,6 +220,7 @@
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>KunjaDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BoekenModel.cs" />
     <Compile Include="Models\BoekingBevestigen.cs" />
     <Compile Include="Models\Boekingen.cs">
       <DependentUpon>KunjaDB.tt</DependentUpon>
