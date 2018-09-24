@@ -40,54 +40,54 @@ border-top-right-radius: 20px; border-top-left-radius: 20px;">
                         <td><h5 style="font-family: Comic Sans MS;">@Model.aantalnachten nacht(en)</h5></td>
 
 
-</tr>
+                    </tr>
 
-<tr>
-
-
-<td>
-
-    <h5 style="font-family: Comic Sans MS;">
-        @Model.Datumvanaf -<br />
-        @Model.Datumtot
-    </h5>
-
-</td>
+                    <tr>
 
 
-</tr>
+                        <td>
 
-<tr>
+                            <h5 style="font-family: Comic Sans MS;">
+                                @Model.Datumvanaf -<br />
+                                @Model.Datumtot
+                            </h5>
 
-
-<td>
-
-<h5 style="font-family: Comic Sans MS;">
- @Model.lodge.aantalpersonen kamers
-</h5>
-
-</td>
+                        </td>
 
 
-</tr>
+                    </tr>
 
-<tr>
-
-
-<td>
+                    <tr>
 
 
-<hr style="margin-left: -25px; border: 0; border-top: 1px solid #808080; margin-right:25px" />
+                        <td>
+
+                            <h5 style="font-family: Comic Sans MS;">
+                                @Model.lodge.aantalpersonen kamers
+                            </h5>
+
+                        </td>
 
 
-<div class="row">
+                    </tr>
+
+                    <tr>
+
+
+                        <td>
+
+
+                            <hr style="margin-left: -25px; border: 0; border-top: 1px solid #808080; margin-right:25px" />
+
+
+                            <div class="row">
 
                                 <div class="col-sm-6">
 
 
 
                                     <h5 style="font-family: Comic Sans MS;">
-                                        @Model.lodge.LodgeTypeNaam.ToUpper().Replace("\n","")
+                                        @Model.lodge.LodgeTypeNaam.ToUpper().Replace("\n", "")
                                     </h5>
                                     <h5 style="font-family: Comic Sans MS; padding-top: 10px;">
                                         Toeristen belasting
@@ -97,7 +97,7 @@ border-top-right-radius: 20px; border-top-left-radius: 20px;">
                                 <div class="col-sm-6">
 
                                     <h5 style="font-family: Comic Sans MS; float: right; margin-right: 40px;">
-                                        €@Model.lodge.prijs.ToString() 
+                                        €@Model.lodge.prijs.ToString()
                                     </h5>
                                     <h5 style="font-family: Comic Sans MS; float: right; margin-right: 40px;">
                                         €0,54
@@ -122,19 +122,23 @@ border-top-right-radius: 20px; border-top-left-radius: 20px;">
                     </h5>
 
                 </div>
-                
-                    
-                
+
+
+
 
 
 
 
             </div>
 
-            <button class="button" style="width: 100%; height: 12%; bottom: 0; background-color: #378452;
-border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: #fff; border: 0;">
-                <h4 style="font-family: 'Comic Sans MS'">Boeking bevestigen</h4>
-            </button>
+            <a href="@Url.Action("EmailBevestigen", "MijnBoeking", new { incheckdatum = Model.boeking.incheckdatum, uitcheckdatum = Model.boeking.uitcheckdatum, lodgeid = Model.lodge.LodgeTypeID } )">
+                <div style="width: 100%; height: 12%; bottom: 0; background-color: #378452;
+                    border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: #fff; border: 0;">
+                    <center><h4 style="font-family: 'Comic Sans MS'; padding-top:20px; ">Boeking bevestigen</h4></center>
+
+
+                </div>
+                </a>
 
 
 
