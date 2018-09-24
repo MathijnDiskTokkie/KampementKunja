@@ -30,50 +30,46 @@ namespace Wagenpark.Controllers
             
             return View(profiel);
         }
+        public ActionResult Boeken()
+        {
+            return View(new BoekenModel());
+        }
 
-        public ActionResult Boeken(string incheckdatum1, string uitcheckdatum1) {
+        [HttpPost]
+        public ActionResult Boeken(BoekenModel model)
+        {
+            CultureInfo MyCultureInfo = new CultureInfo("nl-NL");
 
-            
+            DateTime incheckdatum = model.incheckdatum;
+            DateTime uitcheckdatum = model.uitcheckdatum;
 
-            if (incheckdatum1 != null)
+
+
+
+            var lodges = (from dbLoges in db.Lodges
+                         where (incheckdatum < dbLoges.Boekingen.FirstOrDefault().incheckdatum && uitcheckdatum < dbLoges.Boekingen.FirstOrDefault().incheckdatum) ||
+                         (incheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum && uitcheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum)
+                         select dbLoges).ToList();
+
+
+            List<LodgeTypes> lodgeTypes = new List<LodgeTypes>();
+
+            foreach (var item in lodges)
             {
 
 
-                CultureInfo MyCultureInfo = new CultureInfo("nl-NL");
-
-                DateTime incheckdatum = DateTime.ParseExact(incheckdatum1, "dd-MM-yyyy",MyCultureInfo);
-                DateTime uitcheckdatum = DateTime.ParseExact(incheckdatum1, "dd-MM-yyyy", MyCultureInfo); 
-
-
-
-
-                var lodges = from a in db.Lodges where (incheckdatum < a.Boekingen.FirstOrDefault().incheckdatum && uitcheckdatum < a.Boekingen.FirstOrDefault().incheckdatum) || (incheckdatum > a.Boekingen.FirstOrDefault().uitcheckdatum && uitcheckdatum > a.Boekingen.FirstOrDefault().uitcheckdatum) select a;
-
-
-                List<LodgeTypes> lodgeTypes = new List<LodgeTypes>();
-
-                foreach (var item in lodges)
-                {
-
-
-                    lodgeTypes.Add(item.LodgeTypes);
-                }
-
-                lodgeTypes.Distinct().ToList();
-
-                BoekenModel boekmodle = new BoekenModel();
-                boekmodle.lodgestypes = lodgeTypes;
-               
-
-                //lodgeTypes = (from i in db.Lodges where i.Bezettingsgraad == true select i.LodgeTypes).Distinct().ToList();
-
-                return View(boekmodle);
-
+                lodgeTypes.Add(item.LodgeTypes);
             }
-            else {
 
-                return View(new BoekenModel());
-            }
+            lodgeTypes.Distinct().ToList();
+
+            BoekenModel boekmodle = new BoekenModel();
+            boekmodle.lodgestypes = lodgeTypes;
+
+
+            //lodgeTypes = (from i in db.Lodges where i.Bezettingsgraad == true select i.LodgeTypes).Distinct().ToList();
+
+            return View(boekmodle);
         }
 
 
@@ -128,6 +124,11 @@ namespace Wagenpark.Controllers
             return null;
 
             
+        }
+
+        public ActionResult GetLodgeTypes()
+        {
+            return PartialView("LodgeTypePartial");
         }
     }
 }

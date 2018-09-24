@@ -429,6 +429,7 @@
     <Content Include="Views\Boekingen\Details.cshtml" />
     <Content Include="Views\Boekingen\Edit.cshtml" />
     <Content Include="Views\Boekingen\Index.cshtml" />
+    <Content Include="Views\MijnBoeking\LogeTypesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,7 +9,7 @@ namespace Wagenpark.Models
     {
 
         public List<LodgeTypes> lodgestypes { get; set;}
-        public string incheckdatum { get; set; }
-        public string uitcheckdatum { get; set; }
+        public DateTime incheckdatum { get; set; }
+        public DateTime uitcheckdatum { get; set; }
     }
 }
