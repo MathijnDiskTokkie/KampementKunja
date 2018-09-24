@@ -78,29 +78,28 @@ namespace Wagenpark.Controllers
 
 
 
-<<<<<<< HEAD
-        public ActionResult BoekingBevestigen(DateTime incheckdatum, DateTime uitcheckdatum, int lodgetypeid) {
-=======
         public ActionResult BoekingBevestigen(DateTime incheckdatum, DateTime uitcheckdatum, int lodgetype) {
->>>>>>> 7ea8bdea6e139f472bf8b57ecd0a5c21676c957a
 
-            Wagenpark.Models.BoekingBevestigen boek = new Wagenpark.Models.BoekingBevestigen();
+            if (lodgetype != 0)
+            {
+                Wagenpark.Models.BoekingBevestigen boek = new Wagenpark.Models.BoekingBevestigen();
 
-            Boekingen boeken = new Boekingen();
-            boeken.incheckdatum = incheckdatum;
-<<<<<<< HEAD
-            boeken.uitcheckdatum = uitcheckdatum;
-            boeken.lodgeID = lodgetypeid;
-=======
-            boeken.uitcheckdatum =uitcheckdatum;
-            boeken.lodgeID = lodgetype;
->>>>>>> 7ea8bdea6e139f472bf8b57ecd0a5c21676c957a
-            boek.boeking = boeken;
+                Boekingen boeken = new Boekingen();
+                boeken.incheckdatum = incheckdatum;
+                boeken.uitcheckdatum = uitcheckdatum;
+                boeken.lodgeID = lodgetype;
+                boeken.uitcheckdatum = uitcheckdatum;
+                boek.boeking = boeken;
 
-            /*boek.boeking = (from i in db.Boekingen select i).FirstOrDefault();*/
-            boek.lodge = (from i in db.LodgeTypes select i).FirstOrDefault();
+                boek.lodge = (from i in db.LodgeTypes select i).FirstOrDefault();
 
-            return View(boek);
+                return View(boek);
+            }
+            else {
+
+                return null;
+
+            }
         }
 
         public ActionResult EmailBevestigen(DateTime incheckdatum, DateTime uitcheckdatum, int lodgeid) {
@@ -122,6 +121,8 @@ namespace Wagenpark.Controllers
                     db.Boekingen.Add(df);
                     db.SaveChanges();
 
+                    EmailVerzenden(df);
+
                     return View();
 
                 }
@@ -138,41 +139,61 @@ namespace Wagenpark.Controllers
             
         }
 
-<<<<<<< HEAD
 
-        public void EmailVerzenden(Boekingen boekingen) {
+        public void EmailVerzenden(Boekingen boekingen)
+        {
 
             // verzend een email
 
             try
             {
                 string gebruiker = User.Identity.Name;
-                SmtpClient client = new SmtpClient("some.server.com");
+
+
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com");
+                client.Port = 587;
+                client.EnableSsl = true;
+
+
                 //If you need to authenticate
-                client.Credentials = new NetworkCredential("username", "password");
+                client.Credentials = new NetworkCredential("jop.wolterink@gmail.com", "hofteweg5");
                 MailMessage mailMessage = new MailMessage();
                 MailAddress mailAddress = new MailAddress("noreply@kampementkunja.nl");
                 mailMessage.From = mailAddress;
                 mailMessage.To.Add(gebruiker);
-                mailMessage.Subject = "Bevestiging boeking "+boekingen.Boekingid;
+                mailMessage.Subject = "Bevestiging boeking " + boekingen.Boekingid;
                 mailMessage.Body = "Beste," +
                     "Hartelijk dank voor uw boeking bij kampement kunja. Wij willen doormiddel van deze mail u een bevestiging sturen." +
-                    "Hieronder hebben we uw boekingsdetails";
+                    "Hieronder hebben we uw boekingsdetails:" +
+                    "" +
+                    "Incheckdatum: " + boekingen.incheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL")) + "" +
+                    "Uitcheckdatum: " + boekingen.uitcheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL")) + "" +
+                    "" +
+                    "" +
+                    "Wij hopen hiermee u voldoende geinformeerd te hebben." +
+                    "" +
+                    "" +
+                    "Met vriendelijke groet," +
+                    "" +
+                    "" +
+                    "Kampement Kunja";
+                    
 
                 client.Send(mailMessage);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
 
 
             }
 
 
 
-=======
+        }
         public ActionResult GetLodgeTypes()
         {
             return PartialView("LodgeTypePartial");
->>>>>>> 7ea8bdea6e139f472bf8b57ecd0a5c21676c957a
         }
     }
 }
