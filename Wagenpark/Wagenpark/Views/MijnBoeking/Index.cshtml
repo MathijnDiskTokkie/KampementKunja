@@ -1,13 +1,207 @@
-﻿@model List<Wagenpark.Models.Boekingen>
+﻿@model Wagenpark.Models.MijnProfiel
 
 
 @{
     ViewBag.Title = "Index";
-    
+
 }
 
-<h2>Index</h2>
-<P>Job Wolterink</P>
-<P>Jobwolterink@gmail.com</P>
+<body>
 
+
+    <div class="row">
+        <div class="lijst" style="margin-top:80px;">
+            <div class="col-sm-4" style="background-color: #fff; height: 530px; width: 27%;
+border-radius: 20px; margin: auto;  padding: 0; margin-left: -120px; margin-top: 20px; ">
+                <div style="height: 22%;  border-top-left-radius: 20px;
+border-top-right-radius: 20px;">
+                    <img src="~/Content/Images/stockpicture.png" style="background-size: cover; height: 90%; width: 35%; margin-left: 95px; margin-bottom: -85px;
+ border-radius: 100%;">
+                </div>
+
+                <div style="height: 65%; background-color: #fff; margin-bottom: -20px;">
+
+                    <table style="  width: 100% !important; margin-right: 25px; margin-left: 25px;">
+
+                        <hr style="  border: 0; border-top: 1px solid #808080;" />
+                        <div>
+                            <form>
+                                <h4 class="lijst" style="font-family: Comic Sans MS; margin-left:25px">
+                                    Voornaam:<br>
+                                    <input type="text" value=@Model.gast.Voornaam>
+                                    <br>
+                                    Achternaam:<br>
+                                    <input type="text" name="achternaam" value="@Model.gast.Achternaam">
+                                    <br>
+                                    Postcode:<br>
+                                    <input type="text" name="postcode" value="@Model.gast.Postcode">
+                                    <br>
+                                    Woonplaats:<br>
+                                    <input type="text" name="postcode" value="@Model.gast.Woonplaats">
+                                    <br><br />
+                                    <input type="submit" value="Wijzigen">
+                                </h4>
+                            </form>
+                        </div>
+                </div>
+
+                <tr></tr>
+                <tr>
+
+                    <td>
+                        <h5 style="font-family: Comic Sans MS;"></h5>
+                    </td>
+
+                </tr>
+
+                </table>
+
+
+
+            </div>
+
+
+        </div>
+
+        @foreach(var item in Model.boekingen)
+        {
+
+            <div class="col-sm-4" style="background-color: #fff; height: 520px; width: 27%;
+border-radius: 20px; margin: auto;  padding: 0; margin-left: 20px; margin-top: 20px; margin-bottom: 20px;">
+
+                <div style="height: 22%;  border-top-left-radius: 20px;
+border-top-right-radius: 20px;">
+
+                    <img src="~/Content/Images/Bevestiging.jpg" style="background-size: cover; height: 100%; width: 100%;
+border-top-right-radius: 20px; border-top-left-radius: 20px;">
+
+                </div>
+
+
+                <div style="height: 65%; background-color: #fff;">
+
+
+                    <table style=" margin-top: 15px; width: 100% !important; margin-right: 25px; margin-left: 25px;">
+
+                        <tr>
+
+                            <td><h5 style="font-family: Comic Sans MS;">UW BOEKING BIJ KUNJA:</h5></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td><h5 style="font-family: Comic Sans MS;">Naam:</h5></td>
+
+
+                        </tr>
+
+                     
+
+                        <tr>
+
+                            <td><h5 style="font-family: Comic Sans MS;">Naam Lodge:</h5></td>
+
+
+                        </tr>
+
+
+
+                        <tr>
+
+
+                            <td>
+
+                                <h5 style="font-family: Comic Sans MS;">
+                                    Incheckdatum: @item.incheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL"))<br />
+
+                                </h5>
+
+                            </td>
+
+
+                        </tr>
+
+                        <tr>
+
+
+                            <td>
+
+                                <h5 style="font-family: Comic Sans MS;">
+                                    Uitcheckdatum:
+                                </h5>
+
+                            </td>
+
+
+                        </tr>
+
+                        <tr>
+
+
+                            <td>
+
+
+
+
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+
+
+
+                                        <h5 style="font-family: Comic Sans MS;"></h5>
+                                        <h5 style="font-family: Comic Sans MS; padding-top: 10px;">
+                                            Toeristen belasting
+                                        </h5>
+
+                                    </div>
+
+                                </div>
+                                <hr style="margin-left: -25px;  border: 0; border-top: 1px solid #808080; margin-right:25px;" />
+
+                            </td>
+
+                        </tr>
+                    </table>
+
+                    <div style="margin-top: -10px;">
+
+                        <h5 style="font-family: Comic Sans MS; color:black; font-weight: bold; float: left; text-align:left; margin-left: 25px;">
+                            TOTAAL:
+                        </h5>
+                        <h5 style="font-family: Comic Sans MS; color:black; font-weight: bold; float:right; text-align: right; margin-right: 15px;">
+                            €
+                        </h5>
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+                <button class="button" style="width: 100%; height: 12%; bottom: 0; background-color: #378452;
+border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: #fff; border: 0;">
+                    <h4 style="font-family: 'Comic Sans MS'">Boeking Annuleren</h4>
+                </button>
+
+
+            </div>
+        }
+
+
+
+        <div class="col-sm-4">
+        </div>
+
+    </div>
+
+    </div>
+
+</body>
 
