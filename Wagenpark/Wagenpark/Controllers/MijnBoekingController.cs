@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Wagenpark.Models;
@@ -63,14 +65,14 @@ namespace Wagenpark.Controllers
 
 
 
-        public ActionResult BoekingBevestigen() {
+        public ActionResult BoekingBevestigen(DateTime incheckdatum, DateTime uitcheckdatum, int lodgetypeid) {
 
             Wagenpark.Models.BoekingBevestigen boek = new Wagenpark.Models.BoekingBevestigen();
 
             Boekingen boeken = new Boekingen();
-            boeken.incheckdatum = DateTime.Now.AddDays(-1);
-            boeken.uitcheckdatum = DateTime.Now.AddDays(3);
-            boeken.lodgeID = 1;
+            boeken.incheckdatum = incheckdatum;
+            boeken.uitcheckdatum = uitcheckdatum;
+            boeken.lodgeID = lodgetypeid;
             boek.boeking = boeken;
 
             /*boek.boeking = (from i in db.Boekingen select i).FirstOrDefault();*/
@@ -95,7 +97,6 @@ namespace Wagenpark.Controllers
                     df.incheckdatum = incheckdatum;
                     df.uitcheckdatum = uitcheckdatum;
                     df.lodgeID = lodges.FirstOrDefault().LodgeID;
-
                     db.Boekingen.Add(df);
                     db.SaveChanges();
 
@@ -113,6 +114,37 @@ namespace Wagenpark.Controllers
             return null;
 
             
+        }
+
+
+        public void EmailVerzenden(Boekingen boekingen) {
+
+            // verzend een email
+
+            try
+            {
+                string gebruiker = User.Identity.Name;
+                SmtpClient client = new SmtpClient("some.server.com");
+                //If you need to authenticate
+                client.Credentials = new NetworkCredential("username", "password");
+                MailMessage mailMessage = new MailMessage();
+                MailAddress mailAddress = new MailAddress("noreply@kampementkunja.nl");
+                mailMessage.From = mailAddress;
+                mailMessage.To.Add(gebruiker);
+                mailMessage.Subject = "Bevestiging boeking "+boekingen.Boekingid;
+                mailMessage.Body = "Beste," +
+                    "Hartelijk dank voor uw boeking bij kampement kunja. Wij willen doormiddel van deze mail u een bevestiging sturen." +
+                    "Hieronder hebben we uw boekingsdetails";
+
+                client.Send(mailMessage);
+            }
+            catch (Exception ex) {
+
+
+            }
+
+
+
         }
     }
 }
