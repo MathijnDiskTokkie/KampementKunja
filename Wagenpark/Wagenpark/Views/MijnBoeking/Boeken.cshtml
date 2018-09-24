@@ -13,6 +13,41 @@
         }
     </style>
 
+    <style>
+        legend {
+            background-color: #000;
+            color: #fff;
+            padding: 3px 6px;
+        }
+
+        .output {
+            font: 1rem 'Fira Sans', sans-serif;
+        }
+
+        input {
+            margin: .4rem;
+        }
+
+        label {
+            display: inline-block;
+            text-align: right;
+            width: 20%;
+        }
+
+        .btn-success {
+            width: 200px;
+        }
+
+        h1 {
+            color: lightgray;
+        }
+
+        h2 {
+            color: lightgray;
+        }
+    </style>
+
+
 
 
     @{
@@ -43,93 +78,60 @@
 
         </div>
         <button type="submit" class="btn">Verzenden</button>
+    }
         @*<a href="@Url.Action("Boeken", "MijnBoeking", new { incheckdatum1 = Model.incheckdatum, uitcheckdatum1 = Model.uitcheckdatum })">
 
-            <div style="height: 20px; width: 200px; color: green;">
+                <div style="height: 20px; width: 200px; color: green;">
 
-            </div>
-        </a>*@
+                </div>
+            </a>*@
 
+
+
+
+
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
     }
+    <p>
+        @Html.ActionLink("Create New", "BoekingBevestigen")
+    </p>
 
-        <style>
-            legend {
-                background-color: #000;
-                color: #fff;
-                padding: 3px 6px;
-            }
-
-            .output {
-                font: 1rem 'Fira Sans', sans-serif;
-            }
-
-            input {
-                margin: .4rem;
-            }
-
-            label {
-                display: inline-block;
-                text-align: right;
-                width: 20%;
-            }
-
-            .btn-success {
-                width: 200px;
-            }
-
-            h1 {
-                color: lightgray;
-            }
-
-            h2 {
-                color: lightgray;
-            }
-        </style>
+    <div class="col-sm-8">
+        <table class="table" style="background-color: #fff">
 
 
-
-
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-        }
-        <p>
-            @Html.ActionLink("Create New", "BoekingBevestigen")
-        </p>
-
-        <div class="col-sm-8">
-            <table class="table" style="background-color: #fff">
-
-
-                @if (Model.lodgestypes != null)
+            @if (Model.lodgestypes != null)
+            {
+                foreach (var item in Model.lodgestypes)
                 {
-                    foreach (var item in Model.lodgestypes)
-                    {
-                        <tr>
+                    <tr>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.LodgeOmschrijving)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.LodgeTypeNaam)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.aantalpersonen)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.prijs)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.LodgeTypeID }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.LodgeOmschrijving }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.LodgeTypeID })
-                            </td>
-                        </tr>
-                    }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LodgeOmschrijving)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LodgeTypeNaam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.aantalpersonen)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.prijs)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Boek Lodge", "BoekingBevestigen", new { incheckdatum = Model.incheckdatum, uitcheckdatum = Model.uitcheckdatum, lodgetype = item.LodgeTypeID })
+                        </td>
+                    </tr>
                 }
+            }
 
-            </table>
-        </div>
+        </table>
+    </div>
+    
 
 
 
-    </body>
+</body>

@@ -65,6 +65,8 @@ namespace Wagenpark.Controllers
 
             BoekenModel boekmodle = new BoekenModel();
             boekmodle.lodgestypes = lodgeTypes;
+            boekmodle.incheckdatum = incheckdatum;
+            boekmodle.uitcheckdatum = uitcheckdatum;
 
 
             //lodgeTypes = (from i in db.Lodges where i.Bezettingsgraad == true select i.LodgeTypes).Distinct().ToList();
@@ -74,14 +76,14 @@ namespace Wagenpark.Controllers
 
 
 
-        public ActionResult BoekingBevestigen() {
+        public ActionResult BoekingBevestigen(DateTime incheckdatum, DateTime uitcheckdatum, int lodgetype) {
 
             Wagenpark.Models.BoekingBevestigen boek = new Wagenpark.Models.BoekingBevestigen();
 
             Boekingen boeken = new Boekingen();
-            boeken.incheckdatum = DateTime.Now.AddDays(-1);
-            boeken.uitcheckdatum = DateTime.Now.AddDays(3);
-            boeken.lodgeID = 1;
+            boeken.incheckdatum = incheckdatum;
+            boeken.uitcheckdatum =uitcheckdatum;
+            boeken.lodgeID = lodgetype;
             boek.boeking = boeken;
 
             /*boek.boeking = (from i in db.Boekingen select i).FirstOrDefault();*/

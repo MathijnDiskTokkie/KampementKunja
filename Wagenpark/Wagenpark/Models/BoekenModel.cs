@@ -11,5 +11,6 @@ namespace Wagenpark.Models
         public List<LodgeTypes> lodgestypes { get; set;}
         public DateTime incheckdatum { get; set; }
         public DateTime uitcheckdatum { get; set; }
+        public int lodgetype { get; set; }
     }
 }
