@@ -220,6 +220,7 @@
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>KunjaDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BoekenModel.cs" />
     <Compile Include="Models\BoekingBevestigen.cs" />
     <Compile Include="Models\Boekingen.cs">
       <DependentUpon>KunjaDB.tt</DependentUpon>
@@ -428,6 +429,7 @@
     <Content Include="Views\Boekingen\Details.cshtml" />
     <Content Include="Views\Boekingen\Edit.cshtml" />
     <Content Include="Views\Boekingen\Index.cshtml" />
+    <Content Include="Views\MijnBoeking\LogeTypesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
