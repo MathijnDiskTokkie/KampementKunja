@@ -157,7 +157,7 @@ namespace Wagenpark.Controllers
 
 
                 //If you need to authenticate
-                client.Credentials = new NetworkCredential("jop.wolterink@gmail.com", "hofteweg5");
+                client.Credentials = new NetworkCredential("jopwolterink@gmail.com", "hofteweg5");
                 MailMessage mailMessage = new MailMessage();
                 MailAddress mailAddress = new MailAddress("noreply@kampementkunja.nl");
                 mailMessage.From = mailAddress;
