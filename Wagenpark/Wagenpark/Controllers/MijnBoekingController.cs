@@ -83,34 +83,23 @@ namespace Wagenpark.Controllers
             if (lodgetype != 0)
             {
                 Wagenpark.Models.BoekingBevestigen boek = new Wagenpark.Models.BoekingBevestigen();
-
                 Boekingen boeken = new Boekingen();
                 boeken.incheckdatum = incheckdatum;
                 boeken.uitcheckdatum = uitcheckdatum;
                 boeken.lodgeID = lodgetype;
-                boeken.uitcheckdatum = uitcheckdatum;
+
+                boeken.uitcheckdatum =uitcheckdatum;
+                boeken.lodgeID = lodgetype;
                 boek.boeking = boeken;
-
-<<<<<<< HEAD
-            Boekingen boeken = new Boekingen();
-            boeken.incheckdatum = incheckdatum;
-            boeken.uitcheckdatum = uitcheckdatum;
-            boeken.lodgeID = lodgetype;
-
-            boeken.uitcheckdatum =uitcheckdatum;
-            boeken.lodgeID = lodgetype;
-            boek.boeking = boeken;
-=======
                 boek.lodge = (from i in db.LodgeTypes select i).FirstOrDefault();
 
-                return View(boek);
-            }
-            else {
->>>>>>> c1643d2f8ad70768e1405c4c2eed598a3692126c
+                    return View(boek);
+                }
+                else {
 
-                return null;
+                    return null;
 
-            }
+                }
         }
 
         public ActionResult EmailBevestigen(DateTime incheckdatum, DateTime uitcheckdatum, int lodgeid) {
@@ -202,10 +191,8 @@ namespace Wagenpark.Controllers
 
         }
 
-<<<<<<< HEAD
-=======
-        }
->>>>>>> c1643d2f8ad70768e1405c4c2eed598a3692126c
+        
+
         public ActionResult GetLodgeTypes()
         {
             return PartialView("LodgeTypePartial");

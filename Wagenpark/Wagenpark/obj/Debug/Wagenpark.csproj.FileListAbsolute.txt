@@ -729,7 +729,6 @@ C:\Users\User\Documents\GitHub\KampementKunja\Wagenpark\Wagenpark\obj\Debug\Wage
 C:\Users\User\Documents\GitHub\KampementKunja\Wagenpark\Wagenpark\obj\Debug\Wagenpark.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\KampementKunja\Wagenpark\Wagenpark\obj\Debug\Wagenpark.dll
 C:\Users\User\Documents\GitHub\KampementKunja\Wagenpark\Wagenpark\obj\Debug\Wagenpark.pdb
-C:\Users\User\Documents\GitHub\KampementKunja\Wagenpark\Wagenpark\obj\Debug\Wagenpark.csprojResolveAssemblyReference.cache
 C:\Users\brent\Documents\GitHub\gores\KampementKunja\Wagenpark\Wagenpark\bin\ApplicationInsights.config
 C:\Users\brent\Documents\GitHub\gores\KampementKunja\Wagenpark\Wagenpark\bin\Wagenpark.dll.config
 C:\Users\brent\Documents\GitHub\gores\KampementKunja\Wagenpark\Wagenpark\bin\Wagenpark.dll
