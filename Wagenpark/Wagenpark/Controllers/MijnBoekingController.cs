@@ -78,23 +78,17 @@ namespace Wagenpark.Controllers
 
 
 
-<<<<<<< HEAD
-        public ActionResult BoekingBevestigen(DateTime incheckdatum, DateTime uitcheckdatum, int lodgetypeid) {
-=======
         public ActionResult BoekingBevestigen(DateTime incheckdatum, DateTime uitcheckdatum, int lodgetype) {
->>>>>>> 7ea8bdea6e139f472bf8b57ecd0a5c21676c957a
 
             Wagenpark.Models.BoekingBevestigen boek = new Wagenpark.Models.BoekingBevestigen();
 
             Boekingen boeken = new Boekingen();
             boeken.incheckdatum = incheckdatum;
-<<<<<<< HEAD
             boeken.uitcheckdatum = uitcheckdatum;
-            boeken.lodgeID = lodgetypeid;
-=======
+            boeken.lodgeID = lodgetype;
+
             boeken.uitcheckdatum =uitcheckdatum;
             boeken.lodgeID = lodgetype;
->>>>>>> 7ea8bdea6e139f472bf8b57ecd0a5c21676c957a
             boek.boeking = boeken;
 
             /*boek.boeking = (from i in db.Boekingen select i).FirstOrDefault();*/
@@ -138,9 +132,9 @@ namespace Wagenpark.Controllers
             
         }
 
-<<<<<<< HEAD
 
-        public void EmailVerzenden(Boekingen boekingen) {
+        public void EmailVerzenden(Boekingen boekingen)
+        {
 
             // verzend een email
 
@@ -154,25 +148,25 @@ namespace Wagenpark.Controllers
                 MailAddress mailAddress = new MailAddress("noreply@kampementkunja.nl");
                 mailMessage.From = mailAddress;
                 mailMessage.To.Add(gebruiker);
-                mailMessage.Subject = "Bevestiging boeking "+boekingen.Boekingid;
+                mailMessage.Subject = "Bevestiging boeking " + boekingen.Boekingid;
                 mailMessage.Body = "Beste," +
                     "Hartelijk dank voor uw boeking bij kampement kunja. Wij willen doormiddel van deze mail u een bevestiging sturen." +
                     "Hieronder hebben we uw boekingsdetails";
 
                 client.Send(mailMessage);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
 
 
             }
 
 
+        }
 
-=======
         public ActionResult GetLodgeTypes()
         {
             return PartialView("LodgeTypePartial");
->>>>>>> 7ea8bdea6e139f472bf8b57ecd0a5c21676c957a
         }
     }
 }
