@@ -91,11 +91,22 @@ namespace Wagenpark.Controllers
                 boeken.uitcheckdatum = uitcheckdatum;
                 boek.boeking = boeken;
 
+<<<<<<< HEAD
+            Boekingen boeken = new Boekingen();
+            boeken.incheckdatum = incheckdatum;
+            boeken.uitcheckdatum = uitcheckdatum;
+            boeken.lodgeID = lodgetype;
+
+            boeken.uitcheckdatum =uitcheckdatum;
+            boeken.lodgeID = lodgetype;
+            boek.boeking = boeken;
+=======
                 boek.lodge = (from i in db.LodgeTypes select i).FirstOrDefault();
 
                 return View(boek);
             }
             else {
+>>>>>>> c1643d2f8ad70768e1405c4c2eed598a3692126c
 
                 return null;
 
@@ -189,8 +200,12 @@ namespace Wagenpark.Controllers
             }
 
 
-
         }
+
+<<<<<<< HEAD
+=======
+        }
+>>>>>>> c1643d2f8ad70768e1405c4c2eed598a3692126c
         public ActionResult GetLodgeTypes()
         {
             return PartialView("LodgeTypePartial");
