@@ -80,8 +80,18 @@ namespace Wagenpark.Controllers
 
         public ActionResult BoekingBevestigen(DateTime incheckdatum, DateTime uitcheckdatum, int lodgetype) {
 
-            Wagenpark.Models.BoekingBevestigen boek = new Wagenpark.Models.BoekingBevestigen();
+            if (lodgetype != 0)
+            {
+                Wagenpark.Models.BoekingBevestigen boek = new Wagenpark.Models.BoekingBevestigen();
 
+                Boekingen boeken = new Boekingen();
+                boeken.incheckdatum = incheckdatum;
+                boeken.uitcheckdatum = uitcheckdatum;
+                boeken.lodgeID = lodgetype;
+                boeken.uitcheckdatum = uitcheckdatum;
+                boek.boeking = boeken;
+
+<<<<<<< HEAD
             Boekingen boeken = new Boekingen();
             boeken.incheckdatum = incheckdatum;
             boeken.uitcheckdatum = uitcheckdatum;
@@ -90,11 +100,17 @@ namespace Wagenpark.Controllers
             boeken.uitcheckdatum =uitcheckdatum;
             boeken.lodgeID = lodgetype;
             boek.boeking = boeken;
+=======
+                boek.lodge = (from i in db.LodgeTypes select i).FirstOrDefault();
 
-            /*boek.boeking = (from i in db.Boekingen select i).FirstOrDefault();*/
-            boek.lodge = (from i in db.LodgeTypes select i).FirstOrDefault();
+                return View(boek);
+            }
+            else {
+>>>>>>> c1643d2f8ad70768e1405c4c2eed598a3692126c
 
-            return View(boek);
+                return null;
+
+            }
         }
 
         public ActionResult EmailBevestigen(DateTime incheckdatum, DateTime uitcheckdatum, int lodgeid) {
@@ -115,6 +131,8 @@ namespace Wagenpark.Controllers
                     df.lodgeID = lodges.FirstOrDefault().LodgeID;
                     db.Boekingen.Add(df);
                     db.SaveChanges();
+
+                    EmailVerzenden(df);
 
                     return View();
 
@@ -141,9 +159,16 @@ namespace Wagenpark.Controllers
             try
             {
                 string gebruiker = User.Identity.Name;
-                SmtpClient client = new SmtpClient("some.server.com");
+
+
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com");
+                client.Port = 587;
+                client.EnableSsl = true;
+
+
                 //If you need to authenticate
-                client.Credentials = new NetworkCredential("username", "password");
+                client.Credentials = new NetworkCredential("jop.wolterink@gmail.com", "hofteweg5");
                 MailMessage mailMessage = new MailMessage();
                 MailAddress mailAddress = new MailAddress("noreply@kampementkunja.nl");
                 mailMessage.From = mailAddress;
@@ -151,7 +176,20 @@ namespace Wagenpark.Controllers
                 mailMessage.Subject = "Bevestiging boeking " + boekingen.Boekingid;
                 mailMessage.Body = "Beste," +
                     "Hartelijk dank voor uw boeking bij kampement kunja. Wij willen doormiddel van deze mail u een bevestiging sturen." +
-                    "Hieronder hebben we uw boekingsdetails";
+                    "Hieronder hebben we uw boekingsdetails:" +
+                    "" +
+                    "Incheckdatum: " + boekingen.incheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL")) + "" +
+                    "Uitcheckdatum: " + boekingen.uitcheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL")) + "" +
+                    "" +
+                    "" +
+                    "Wij hopen hiermee u voldoende geinformeerd te hebben." +
+                    "" +
+                    "" +
+                    "Met vriendelijke groet," +
+                    "" +
+                    "" +
+                    "Kampement Kunja";
+                    
 
                 client.Send(mailMessage);
             }
@@ -164,6 +202,10 @@ namespace Wagenpark.Controllers
 
         }
 
+<<<<<<< HEAD
+=======
+        }
+>>>>>>> c1643d2f8ad70768e1405c4c2eed598a3692126c
         public ActionResult GetLodgeTypes()
         {
             return PartialView("LodgeTypePartial");

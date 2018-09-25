@@ -35,7 +35,10 @@
         }
 
         .btn-success {
-            width: 200px;
+            width: 285px;
+            height: 50px;
+            color:darkgreen;
+           
         }
 
         h1 {
@@ -44,6 +47,14 @@
 
         h2 {
             color: lightgray;
+        }
+        table {
+            border-radius: 8px;
+            background-color: white;
+            height 100px;
+            opacity: 0.75;
+            
+
         }
     </style>
 
@@ -59,14 +70,15 @@
         <h1>Welke Lodge wilt u boeken?</h1>
         <div class="col-sm-4">
             <div>
-                @Html.LabelFor(modeld => modeld.incheckdatum, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <h4 style="color: white">@Html.LabelFor(modeld => modeld.incheckdatum, htmlAttributes: new { @class = "control-label" })</h4>
+                
+                <div>
                     @Html.EditorFor(modeld => modeld.incheckdatum, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                     @Html.ValidationMessageFor(modeld => modeld.incheckdatum, "", new { @class = "text-danger" })
                 </div>
                 <div>
-                    @Html.LabelFor(modeld => modeld.uitcheckdatum, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                   <h4 style="color:white"> @Html.LabelFor(modeld => modeld.uitcheckdatum, htmlAttributes: new { @class = "control-label" })</h4>
+                    <div>
                         @Html.EditorFor(modeld => modeld.uitcheckdatum, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                         @Html.ValidationMessageFor(modeld => modeld.uitcheckdatum, "", new { @class = "text-danger" })
                     </div>
@@ -75,16 +87,11 @@
             <br />
             <br />
 
-
+            <button type="submit" class="btn-success">Verzenden</button>
         </div>
-        <button type="submit" class="btn">Verzenden</button>
+        
     }
-        @*<a href="@Url.Action("Boeken", "MijnBoeking", new { incheckdatum1 = Model.incheckdatum, uitcheckdatum1 = Model.uitcheckdatum })">
-
-                <div style="height: 20px; width: 200px; color: green;">
-
-                </div>
-            </a>*@
+       
 
 
 
@@ -95,12 +102,10 @@
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }
-    <p>
-        @Html.ActionLink("Create New", "BoekingBevestigen")
-    </p>
+   
 
     <div class="col-sm-8">
-        <table class="table" style="background-color: #fff">
+        <table class="table">
 
 
             @if (Model.lodgestypes != null)
