@@ -1,38 +1,142 @@
-﻿@model List<Wagenpark.Models.Lodges>
+﻿@model Wagenpark.Models.BoekenModel
+
+<body>
 
 
-<div class="container">
+    <style>
+        body {
+            background-image: url('../../Content/Images/Background.png');
+            background-size: cover;
+        }
 
-    <div class="row">
+        .btn-danger {
+        }
+    </style>
 
-        <div class="col-sm-5">
+    <style>
+        legend {
+            background-color: #000;
+            color: #fff;
+            padding: 3px 6px;
+        }
+
+        .output {
+            font: 1rem 'Fira Sans', sans-serif;
+        }
+
+        input {
+            margin: .4rem;
+        }
+
+        label {
+            display: inline-block;
+            text-align: right;
+            width: 20%;
+        }
+
+        .btn-success {
+            width: 285px;
+            height: 50px;
+            color:darkgreen;
+           
+        }
+
+        h1 {
+            color: lightgray;
+        }
+
+        h2 {
+            color: lightgray;
+        }
+        table {
+            border-radius: 8px;
+            background-color: white;
+            height 100px;
+            opacity: 0.75;
+            
+
+        }
+    </style>
 
 
 
 
+    @{
+        ViewBag.Title = "Boekingen";
+    }
 
+    @using (Html.BeginForm())
+    {
+        <h1>Welke Lodge wilt u boeken?</h1>
+        <div class="col-sm-4">
+            <div>
+                <h4 style="color: white">@Html.LabelFor(modeld => modeld.incheckdatum, htmlAttributes: new { @class = "control-label" })</h4>
+                
+                <div>
+                    @Html.EditorFor(modeld => modeld.incheckdatum, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(modeld => modeld.incheckdatum, "", new { @class = "text-danger" })
+                </div>
+                <div>
+                   <h4 style="color:white"> @Html.LabelFor(modeld => modeld.uitcheckdatum, htmlAttributes: new { @class = "control-label" })</h4>
+                    <div>
+                        @Html.EditorFor(modeld => modeld.uitcheckdatum, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(modeld => modeld.uitcheckdatum, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+
+            <button type="submit" class="btn-success">Verzenden</button>
         </div>
-
-        <div class="col-sm-7" style="overflow-y: scroll; height:400px; background-color: cadetblue">
-
-
-
+        
+    }
+       
 
 
-        </div>
 
 
+
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+   
+
+    <div class="col-sm-8">
+        <table class="table">
+
+
+            @if (Model.lodgestypes != null)
+            {
+                foreach (var item in Model.lodgestypes)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LodgeOmschrijving)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LodgeTypeNaam)
+                        </td>
+                        <td>
+                         @Html.DisplayFor(modelItem => item.aantalpersonen)
+                        </td>
+                        <td>
+                         @Html.DisplayFor(modelItem => item.prijs)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Boek Lodge", "BoekingBevestigen", new { incheckdatum = Model.incheckdatum, uitcheckdatum = Model.uitcheckdatum, lodgetype = item.LodgeTypeID })
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
     </div>
+    
 
 
 
-</div>
-
-
-
-@{
-    ViewBag.Title = "Boeken";
-}
-
-<h2>Boeken</h2>
-
+</body>

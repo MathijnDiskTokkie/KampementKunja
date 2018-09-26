@@ -223,6 +223,8 @@
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>KunjaDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BoekenModel.cs" />
+    <Compile Include="Models\BoekingBevestigen.cs" />
     <Compile Include="Models\Boekingen.cs">
       <DependentUpon>KunjaDB.tt</DependentUpon>
     </Compile>
@@ -310,6 +312,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\Background.png" />
+    <Content Include="Content\Images\Bevestiging.jpg" />
     <Content Include="Content\Images\logo.PNG" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -429,6 +432,7 @@
     <Content Include="Views\Boekingen\Details.cshtml" />
     <Content Include="Views\Boekingen\Edit.cshtml" />
     <Content Include="Views\Boekingen\Index.cshtml" />
+    <Content Include="Views\MijnBoeking\LogeTypesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
