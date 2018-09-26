@@ -2,7 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-image: url("./Images/Background.png");
-    background-size:initial;
+    background-size:cover;
 }
 
 .nav > li > a:focus, .nav > li > a:hover {
