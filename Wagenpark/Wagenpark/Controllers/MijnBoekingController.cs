@@ -56,10 +56,7 @@ namespace Wagenpark.Controllers
             
             return View(profiel);
         }
-        public ActionResult Boeken()
-        {
-            return View(new BoekenModel());
-        }
+        
 
         [HttpPost]
         public ActionResult Boeken(BoekenModel model)
