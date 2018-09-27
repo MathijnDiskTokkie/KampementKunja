@@ -19,7 +19,21 @@ namespace Wagenpark.Models
         public int lodgeID { get; set; }
         public System.DateTime incheckdatum { get; set; }
         public System.DateTime uitcheckdatum { get; set; }
-       
+        public int aantalnachten
+        {
+            get
+            {
+                DateTime start = incheckdatum;
+                DateTime end = uitcheckdatum;
+
+                return ((int)(end - start).TotalDays) - 1;
+
+            }
+
+
+
+
+        }
 
         public virtual Gasten Gasten { get; set; }
         public virtual Lodges Lodges { get; set; }

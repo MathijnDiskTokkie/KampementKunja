@@ -4,51 +4,62 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table" style="background-color: #fff">
-    <tr style="background-color: #4b631f">
-        <th>
-            @Html.DisplayNameFor(model => model.gastID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lodgeID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.incheckdatum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.uitcheckdatum)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.gastID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.lodgeID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.incheckdatum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.uitcheckdatum)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Boekingid }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Boekingid }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Boekingid })
-            </td>
-        </tr>
+<style>
+    body {
+        background-image: url('../../Content/Images/Background.png');
+        background-size: cover;
     }
 
-</table>
+    .btn-danger {
+    }
+</style>
+
+<body>
+    <h2 style="color: white">Gastenlijst:</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table" style="background-color: #fff">
+        <tr style="background-color: #4b631f">
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Gasten.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Lodges.LodgeNaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.incheckdatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.uitcheckdatum)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gasten.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lodges.LodgeNaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.incheckdatum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.uitcheckdatum)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Boekingid }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Boekingid }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Boekingid })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</body>
 
 
