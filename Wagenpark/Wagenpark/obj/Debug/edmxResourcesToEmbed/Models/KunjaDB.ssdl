@@ -95,6 +95,7 @@
     <Property Name="LodgeOmschrijving" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="aantalpersonen" Type="int" Nullable="false" />
     <Property Name="prijs" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="url" Type="text" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
