@@ -116,13 +116,10 @@ namespace Wagenpark.Controllers
                 boeken.incheckdatum = incheckdatum;
                 boeken.uitcheckdatum = uitcheckdatum;
                 boeken.lodgeID = lodgetype;
-
-
-
                 boeken.uitcheckdatum =uitcheckdatum;
                 boeken.lodgeID = lodgetype;
                 boek.boeking = boeken;
-                boek.lodge = (from i in db.LodgeTypes select i).FirstOrDefault();
+                boek.lodge = (from i in db.LodgeTypes where i.LodgeTypeID == lodgetype select i).FirstOrDefault();
 
                     return View(boek);
                 }
