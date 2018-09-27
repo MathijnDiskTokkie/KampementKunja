@@ -56,6 +56,11 @@
             
 
         }
+
+        a{
+            color: darkgreen;
+
+        }
     </style>
 
 
@@ -87,7 +92,7 @@
             <br />
             <br />
 
-            <button type="submit" class="btn-success">Verzenden</button>
+            <button type="submit" class="btn-success">Zoeken</button>
         </div>
         
     }
@@ -106,24 +111,34 @@
             {
                 foreach (var item in Model.lodgestypes)
                 {
-                    <tr>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LodgeOmschrijving)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LodgeTypeNaam)
-                        </td>
-                        <td>
-                         @Html.DisplayFor(modelItem => item.aantalpersonen)
-                        </td>
-                        <td>
-                         @Html.DisplayFor(modelItem => item.prijs)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Boek Lodge", "BoekingBevestigen", new { incheckdatum = Model.incheckdatum, uitcheckdatum = Model.uitcheckdatum, lodgetype = item.LodgeTypeID })
-                        </td>
-                    </tr>
+                   
+            <tr>
+                <td>
+                    <img src="@item.url" style="height:90px; width:130px;" alt="" />
+                </td>
+                <td>
+                    <br />
+                    @Html.DisplayFor(modelItem => item.LodgeOmschrijving)
+                </td>
+                <td>
+                    <br />
+                    @Html.DisplayFor(modelItem => item.LodgeTypeNaam)
+                </td>
+                <td>
+                    <br />
+                    @Html.DisplayFor(modelItem => item.aantalpersonen)Pers.
+                </td>
+                <td>
+                    <br />
+                    €@Html.DisplayFor(modelItem => item.prijs) Per nacht
+                </td>
+                <td>
+                    <br />
+                 <div style="height: 20px; width: 80px; background-color:lightgreen; color;">
+                    @Html.ActionLink("Boek Lodge", "BoekingBevestigen", new { incheckdatum = Model.incheckdatum, uitcheckdatum = Model.uitcheckdatum, lodgetype = item.LodgeTypeID }) 
+                 </div>
+                </td>
+            </tr>
                 }
             }
 
