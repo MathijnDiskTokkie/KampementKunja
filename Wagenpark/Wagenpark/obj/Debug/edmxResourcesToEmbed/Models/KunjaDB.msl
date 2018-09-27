@@ -95,6 +95,7 @@
     <EntitySetMapping Name="LodgeTypes">
       <EntityTypeMapping TypeName="KampementKunjaModel2.LodgeTypes">
         <MappingFragment StoreEntitySet="LodgeTypes">
+          <ScalarProperty Name="url" ColumnName="url" />
           <ScalarProperty Name="LodgeTypeID" ColumnName="LodgeTypeID" />
           <ScalarProperty Name="LodgeTypeNaam" ColumnName="LodgeTypeNaam" />
           <ScalarProperty Name="LodgeOmschrijving" ColumnName="LodgeOmschrijving" />

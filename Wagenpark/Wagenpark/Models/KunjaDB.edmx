@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KampementKunjaModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KampementKunjaModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -100,6 +100,7 @@
           <Property Name="LodgeOmschrijving" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="aantalpersonen" Type="int" Nullable="false" />
           <Property Name="prijs" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="url" Type="text" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -335,8 +336,7 @@
             <End Role="Lodges" EntitySet="Lodges" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KampementKunjaModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -445,6 +445,7 @@
           <Property Name="aantalpersonen" Type="Int32" Nullable="false" />
           <Property Name="prijs" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <NavigationProperty Name="Lodges" Relationship="Self.FK_Lodges_LodgeTypes" FromRole="LodgeTypes" ToRole="Lodges" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -749,6 +750,7 @@
           <EntitySetMapping Name="LodgeTypes">
             <EntityTypeMapping TypeName="KampementKunjaModel2.LodgeTypes">
               <MappingFragment StoreEntitySet="LodgeTypes">
+                <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="LodgeTypeID" ColumnName="LodgeTypeID" />
                 <ScalarProperty Name="LodgeTypeNaam" ColumnName="LodgeTypeNaam" />
                 <ScalarProperty Name="LodgeOmschrijving" ColumnName="LodgeOmschrijving" />

@@ -97,10 +97,10 @@ border-top-right-radius: 20px; border-top-left-radius: 20px;">
                                 <div class="col-sm-6">
 
                                     <h5 style="font-family: Comic Sans MS; float: right; margin-right: 40px;">
-                                        €@Model.lodge.prijs.ToString()
+                                        €@Model.lodge.prijs 
                                     </h5>
                                     <h5 style="font-family: Comic Sans MS; float: right; margin-right: 40px;">
-                                        €0,54
+                                        €0,00
                                     </h5>
 
                                 </div>
@@ -118,7 +118,7 @@ border-top-right-radius: 20px; border-top-left-radius: 20px;">
                         TOTAAL:
                     </h5>
                     <h5 style="font-family: Comic Sans MS; color:black; font-weight: bold; float:right; text-align: right; margin-right: 15px;">
-                        €@Model.lodge.prijs.ToString()
+                        €@(Model.lodge.prijs * Model.aantalnachten)
                     </h5>
 
                 </div>

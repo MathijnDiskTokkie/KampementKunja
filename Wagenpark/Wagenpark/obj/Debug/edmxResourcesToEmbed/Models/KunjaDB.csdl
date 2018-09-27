@@ -105,6 +105,7 @@
     <Property Name="aantalpersonen" Type="Int32" Nullable="false" />
     <Property Name="prijs" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <NavigationProperty Name="Lodges" Relationship="Self.FK_Lodges_LodgeTypes" FromRole="LodgeTypes" ToRole="Lodges" />
+    <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Role">
     <Key>

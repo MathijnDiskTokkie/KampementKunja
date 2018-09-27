@@ -25,6 +25,7 @@ namespace Wagenpark.Models
         public string LodgeOmschrijving { get; set; }
         public int aantalpersonen { get; set; }
         public decimal prijs { get; set; }
+        public string url { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lodges> Lodges { get; set; }

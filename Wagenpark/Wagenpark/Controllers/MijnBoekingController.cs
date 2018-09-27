@@ -56,7 +56,9 @@ namespace Wagenpark.Controllers
             
             return View(profiel);
         }
-        
+        public ActionResult Boeken() {
+            return View(new BoekenModel());
+        }
 
         [HttpPost]
         public ActionResult Boeken(BoekenModel model)
@@ -66,10 +68,11 @@ namespace Wagenpark.Controllers
             DateTime incheckdatum = model.incheckdatum;
             DateTime uitcheckdatum = model.uitcheckdatum;
 
+
             List<LodgeTypes> lodgeTypes = new List<LodgeTypes>();
 
 
-            var boekingen = from a in db.Boekingen select a;
+            /*var boekingen = from a in db.Boekingen select a;
 
             if (!boekingen.Any())
             {
@@ -78,21 +81,19 @@ namespace Wagenpark.Controllers
 
             }
             else
-            {
+            {*/
 
                 var lodges = (from dbLoges in db.Lodges
                               where (incheckdatum < dbLoges.Boekingen.FirstOrDefault().incheckdatum && uitcheckdatum < dbLoges.Boekingen.FirstOrDefault().incheckdatum) ||
-                              (incheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum && uitcheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum)
+                              (incheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum && uitcheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum) || (dbLoges.Boekingen.FirstOrDefault() == null) 
                               select dbLoges).ToList();
 
                 foreach (var item in lodges)
                 {
-
-
                     lodgeTypes.Add(item.LodgeTypes);
                 }
 
-            }
+            //}
 
             lodgeTypes.Distinct().ToList();
 
@@ -116,6 +117,8 @@ namespace Wagenpark.Controllers
                 boeken.uitcheckdatum = uitcheckdatum;
                 boeken.lodgeID = lodgetype;
 
+
+
                 boeken.uitcheckdatum =uitcheckdatum;
                 boeken.lodgeID = lodgetype;
                 boek.boeking = boeken;
@@ -137,15 +140,22 @@ namespace Wagenpark.Controllers
 
             if (gebruiker.Any()) {
 
-                var lodges = from a in db.Lodges where (incheckdatum < a.Boekingen.FirstOrDefault().incheckdatum && uitcheckdatum < a.Boekingen.FirstOrDefault().incheckdatum) || (incheckdatum > a.Boekingen.FirstOrDefault().uitcheckdatum && uitcheckdatum > a.Boekingen.FirstOrDefault().uitcheckdatum) && a.LodgeTypeID == lodgeid select a;
+                var lodges = (from dbLoges in db.Lodges
+                              where (incheckdatum < dbLoges.Boekingen.FirstOrDefault().incheckdatum && uitcheckdatum < dbLoges.Boekingen.FirstOrDefault().incheckdatum) ||
+                              (incheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum && uitcheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum)
+                              select dbLoges).ToList();
+
+                var boekingen = from i in db.Boekingen select i;
 
                 if (lodges.Any())
                 {
+                    var lodgesbeschikbaar = from a in db.Lodges where a.LodgeTypeID == lodgeid select a;
+
                     Boekingen df = new Boekingen();
                     df.gastID = gebruiker.FirstOrDefault().GastenID;
                     df.incheckdatum = incheckdatum;
                     df.uitcheckdatum = uitcheckdatum;
-                    df.lodgeID = lodges.FirstOrDefault().LodgeID;
+                    df.lodgeID = lodgesbeschikbaar.FirstOrDefault().LodgeID;
                     db.Boekingen.Add(df);
                     db.SaveChanges();
 
@@ -155,6 +165,24 @@ namespace Wagenpark.Controllers
 
                 }
                 else {
+
+                    if (!boekingen.Any()) {
+
+                        var lodgesbeschikbaar = from a in db.Lodges where a.LodgeTypeID == lodgeid select a;
+
+                        Boekingen df = new Boekingen();
+                        df.gastID = gebruiker.FirstOrDefault().GastenID;
+                        df.incheckdatum = incheckdatum;
+                        df.uitcheckdatum = uitcheckdatum;
+                        df.lodgeID = lodgesbeschikbaar.FirstOrDefault().LodgeID;
+                        db.Boekingen.Add(df);
+                        db.SaveChanges();
+
+                        EmailVerzenden(df);
+
+                        return View();
+
+                    }
                     // error
                     return null;
                 }
@@ -172,6 +200,7 @@ namespace Wagenpark.Controllers
         {
 
             // verzend een email
+            var gebruikerd = from i in db.Boekingen where i.Boekingid == boekingen.Boekingid select i;
 
             try
             {
@@ -185,24 +214,24 @@ namespace Wagenpark.Controllers
 
 
                 //If you need to authenticate
-                client.Credentials = new NetworkCredential("jopwolterink@gmail.com", "hofteweg5");
+                client.Credentials = new NetworkCredential("kampementkunja@gmail.com", "Kampementkunja123");
                 MailMessage mailMessage = new MailMessage();
                 MailAddress mailAddress = new MailAddress("noreply@kampementkunja.nl");
                 mailMessage.From = mailAddress;
                 mailMessage.To.Add(gebruiker);
                 mailMessage.Subject = "Bevestiging boeking " + boekingen.Boekingid;
-                mailMessage.Body = "Beste," +
-                    "Hartelijk dank voor uw boeking bij kampement kunja. Wij willen doormiddel van deze mail u een bevestiging sturen." +
-                    "Hieronder hebben we uw boekingsdetails:" +
+                mailMessage.Body = "Beste "+gebruikerd.FirstOrDefault().Gasten.Voornaam+",\n\n" +
+                    "Hartelijk dank voor uw boeking bij kampement kunja. Wij willen doormiddel van deze mail u een bevestiging sturen.\n" +
+                    "Hieronder hebben we uw boekingsdetails:\n\n" +
                     "" +
-                    "Incheckdatum: " + boekingen.incheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL")) + "" +
-                    "Uitcheckdatum: " + boekingen.uitcheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL")) + "" +
+                    "Incheckdatum: " + boekingen.incheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL")) + "\n" +
+                    "Uitcheckdatum: " + boekingen.uitcheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL")) + "\n" +
+                    "\n" +
+                    "\n" +
+                    "Wij hopen hiermee u voldoende geinformeerd te hebben.\n\n\n" +
                     "" +
                     "" +
-                    "Wij hopen hiermee u voldoende geinformeerd te hebben." +
-                    "" +
-                    "" +
-                    "Met vriendelijke groet," +
+                    "Met vriendelijke groet,\n\n" +
                     "" +
                     "" +
                     "Kampement Kunja";

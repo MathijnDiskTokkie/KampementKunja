@@ -41,12 +41,13 @@ border-top-right-radius: 20px;">
                                     Woonplaats:<br>
                                     <input type="text" name="woonplaats" value="@Model.gast.Woonplaats">
                                     <br><br />
-                                    
-                                    <a href="">
-                                        <button style="width: 100px; height: 30px; border: 1px solid #378452;">
-                                            <h5 style="font-family: 'Comic Sans MS'">Wijzigen</h5>
-                                        </button>
-                                    </a>
+                                        <center>
+                                            <a href="">
+                                                <button style="width: 100px; height: 30px; border: 1px solid #378452;">
+                                                    <h5 style="font-family: 'Comic Sans MS'; margin-bottom: 6px; padding-bottom: 4px;">Wijzigen</h5>
+                                                </button>
+                                            </a>
+                                        </center>
 
                                 </h4>
                             </form>
@@ -59,20 +60,12 @@ border-top-right-radius: 20px;">
 
                 </div>
 
-                <tr></tr>
-                <tr>
-
-                    <td>
-                        <h5 style="font-family: Comic Sans MS;"></h5>
-                    </td>
-
-                </tr>
 
                 </table>
 
                 <a href="@Url.Action("Boeken", "MijnBoeking")">
                     <button class="submit" style="width: 100%; height: 18%; bottom: 0; background-color: #378452;
-border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: #fff; border: 0; margin-top: 70px" value="ve" name="verwijderen">
+border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: #fff; border: 0; margin-top: 50px" value="ve" name="verwijderen">
                         <h4 style="font-family: 'Comic Sans MS'">Lodge boeken</h4>
                     </button>
                 </a>
@@ -127,52 +120,24 @@ border-top-right-radius: 20px; border-top-left-radius: 20px;">
 
 
                         <tr>
-
-
                             <td>
-
                                 <h5 style="font-family: Comic Sans MS;">
-                                    <b>Incheckdatum:</b> @item.incheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL"))<br />
-
-</h5>
-
+                                    <b>Incheckdatum:</b> @item.incheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL"))<br /></h5>
                             </td>
-
-
                         </tr>
 
                         <tr>
-
-
                             <td>
-
                                 <h5 style="font-family: Comic Sans MS;">
                                     <b>Uitcheckdatum:</b> @item.uitcheckdatum.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("nl-NL"))
                                 </h5>
-
                             </td>
-
-
                         </tr>
-
                         <tr>
-
-
                             <td>
-
-
-
-
-
                                 <div class="row">
-
                                     <div class="col-sm-6">
-
-
-
                                         <h5 style="font-family: Comic Sans MS;"></h5>
-                                      
-
                                     </div>
 
                                 </div>
@@ -186,18 +151,9 @@ border-top-right-radius: 20px; border-top-left-radius: 20px;">
                     <div style="margin-top: -10px;">
 
                         <h5 style="font-family: Comic Sans MS; color:black; font-weight: bold; float: left; text-align:left; margin-left: 25px;">
-                            TOTAAL: € @item.Lodges.LodgeTypes.prijs
-
+                            TOTAAL: € @(item.Lodges.LodgeTypes.prijs * item.aantalnachten)
                         </h5>
-                    
                     </div>
-
-
-
-
-
-
-
                 </div>
                 <a href="@Url.Action("Index","MijnBoeking", new { updaten = "False", item.Boekingid })">
                     <button class="button" style="width: 100%; height: 12%; bottom: 0; background-color: #378452;
