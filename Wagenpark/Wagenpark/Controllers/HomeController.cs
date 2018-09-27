@@ -4,18 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Wagenpark.Models;
+using Facebook;
+using Newtonsoft.Json;
+using System.Web.Security;
 
 namespace Wagenpark.Controllers
 {
+  
     public class HomeController : Controller
     {
 
         ApplicationDbContext db = new ApplicationDbContext();
 
+        
+
         public ActionResult Index()
         {
             // inlogpagina
-            
 
             return View();
         }
@@ -33,5 +38,8 @@ namespace Wagenpark.Controllers
 
             return View();
         }
+
+       
+
     }
 }
