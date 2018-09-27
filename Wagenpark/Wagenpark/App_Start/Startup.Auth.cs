@@ -58,11 +58,11 @@ namespace Wagenpark
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "828732426934-edibuu77f7v99jb9luk8u206o41b9teq.apps.googleusercontent.com 	",
+                ClientSecret = "cVzYbKvxcUw8rLi8djpDIO9e"
+            });
         }
     }
 }
