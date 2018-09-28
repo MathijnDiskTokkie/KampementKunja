@@ -203,6 +203,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BoekingenController.cs" />
     <Compile Include="Controllers\LodgeController.cs" />
+    <Compile Include="Controllers\Lodgetypescontroller.cs" />
     <Compile Include="Controllers\MijnBoekingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -433,6 +434,11 @@
     <Content Include="Views\Boekingen\Edit.cshtml" />
     <Content Include="Views\Boekingen\Index.cshtml" />
     <Content Include="Views\MijnBoeking\LogeTypesPartial.cshtml" />
+    <Content Include="Views\Lodgetypescontroller\Create.cshtml" />
+    <Content Include="Views\Lodgetypescontroller\Delete.cshtml" />
+    <Content Include="Views\Lodgetypescontroller\Details.cshtml" />
+    <Content Include="Views\Lodgetypescontroller\Edit.cshtml" />
+    <Content Include="Views\Lodgetypescontroller\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
