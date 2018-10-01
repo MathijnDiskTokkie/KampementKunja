@@ -229,6 +229,7 @@
     <Compile Include="Models\Boekingen.cs">
       <DependentUpon>KunjaDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BoekingenModel.cs" />
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>KunjaDB.tt</DependentUpon>
     </Compile>
