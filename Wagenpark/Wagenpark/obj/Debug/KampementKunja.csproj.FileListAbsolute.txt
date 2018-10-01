@@ -121,3 +121,4 @@ C:\Users\mathi\Documents\GitHub\KampementKunja\KampementKunja\Wagenpark\Wagenpar
 C:\Users\mathi\Documents\GitHub\KampementKunja\KampementKunja\Wagenpark\Wagenpark\obj\Debug\KampementKunja.csproj.CopyComplete
 C:\Users\mathi\Documents\GitHub\KampementKunja\KampementKunja\Wagenpark\Wagenpark\obj\Debug\Wagenpark.dll
 C:\Users\mathi\Documents\GitHub\KampementKunja\KampementKunja\Wagenpark\Wagenpark\obj\Debug\Wagenpark.pdb
+C:\Users\mathi\Documents\GitHub\KampementKunja\KampementKunja\Wagenpark\Wagenpark\obj\Debug\KampementKunja.csprojAssemblyReference.cache
