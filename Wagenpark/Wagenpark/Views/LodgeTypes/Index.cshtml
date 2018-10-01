@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Wagenpark.Models.LodgeTypes>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().LodgeTypeNaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().LodgeOmschrijving)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().aantalpersonen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().prijs)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LodgeTypeNaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LodgeOmschrijving)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aantalpersonen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prijs)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LodgeTypeID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.LodgeTypeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.LodgeTypeID })
+        </td>
+    </tr>
+}
+
+</table>
