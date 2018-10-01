@@ -46,7 +46,7 @@ namespace Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LodgeTypeNaam,LodgeOmschrijving,aantalpersonen,prijs")] LodgeTypes lodgeTypes)
+        public ActionResult Create([Bind(Include = "LodgeTypeID,LodgeTypeNaam,LodgeOmschrijving,aantalpersonen,prijs,url")] LodgeTypes lodgeTypes)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Wagenpark.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LodgeTypeNaam,LodgeOmschrijving,aantalpersonen,prijs")] LodgeTypes lodgeTypes)
+        public ActionResult Edit([Bind(Include = "LodgeTypeID,LodgeTypeNaam,LodgeOmschrijving,aantalpersonen,prijs,url")] LodgeTypes lodgeTypes)
         {
             if (ModelState.IsValid)
             {

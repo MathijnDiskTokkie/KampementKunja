@@ -13,16 +13,19 @@
         <tr style="background-color: #4b631f">>
   
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().LodgeTypeNaam)
+            @Html.DisplayNameFor(model => model.LodgeTypeNaam)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().LodgeOmschrijving)
+            @Html.DisplayNameFor(model => model.LodgeOmschrijving)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().aantalpersonen)
+            @Html.DisplayNameFor(model => model.aantalpersonen)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().prijs)
+            @Html.DisplayNameFor(model => model.prijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.url)
         </th>
         <th></th>
     </tr>
@@ -42,9 +45,12 @@
             @Html.DisplayFor(modelItem => item.prijs)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.url)
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.LodgeTypeID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.LodgeTypeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.LodgeTypeID })
+            @Html.ActionLink("Details", "Details", new { id=item.LodgeTypeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LodgeTypeID })
         </td>
     </tr>
 }

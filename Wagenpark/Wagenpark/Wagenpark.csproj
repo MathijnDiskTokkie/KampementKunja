@@ -202,7 +202,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BoekingenController.cs" />
-    <Compile Include="Controllers\LodgesController.cs" />
+    <Compile Include="Controllers\LodgeController.cs" />
     <Compile Include="Controllers\Lodgetypescontroller.cs" />
     <Compile Include="Controllers\MijnBoekingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -435,16 +435,11 @@
     <Content Include="Views\Boekingen\Edit.cshtml" />
     <Content Include="Views\Boekingen\Index.cshtml" />
     <Content Include="Views\MijnBoeking\LogeTypesPartial.cshtml" />
-    <Content Include="Views\Lodges\Create.cshtml" />
-    <Content Include="Views\Lodges\Delete.cshtml" />
-    <Content Include="Views\Lodges\Details.cshtml" />
-    <Content Include="Views\Lodges\Edit.cshtml" />
-    <Content Include="Views\Lodges\Index.cshtml" />
-    <Content Include="Views\LodgeTypes\Create.cshtml" />
-    <Content Include="Views\LodgeTypes\Delete.cshtml" />
-    <Content Include="Views\LodgeTypes\Details.cshtml" />
-    <Content Include="Views\LodgeTypes\Edit.cshtml" />
-    <Content Include="Views\LodgeTypes\Index.cshtml" />
+    <Content Include="Views\Lodgetypescontroller\Create.cshtml" />
+    <Content Include="Views\Lodgetypescontroller\Delete.cshtml" />
+    <Content Include="Views\Lodgetypescontroller\Details.cshtml" />
+    <Content Include="Views\Lodgetypescontroller\Edit.cshtml" />
+    <Content Include="Views\Lodgetypescontroller\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
