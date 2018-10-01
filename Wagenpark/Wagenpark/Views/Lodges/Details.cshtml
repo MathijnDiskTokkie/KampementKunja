@@ -1,0 +1,50 @@
+﻿@model Wagenpark.Models.Lodges
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lodges</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LodgeNR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LodgeNR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LodgeNaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LodgeNaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bezettingsgraad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bezettingsgraad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LodgeTypes.LodgeTypeNaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LodgeTypes.LodgeTypeNaam)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LodgeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
