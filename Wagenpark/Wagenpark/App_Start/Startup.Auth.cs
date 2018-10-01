@@ -54,9 +54,9 @@ namespace Wagenpark
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "407403646457389",
+               appSecret: "b95fc21f7b0df3f31a3d4165ea8b8abc");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
