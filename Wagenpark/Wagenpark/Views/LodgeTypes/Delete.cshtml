@@ -8,47 +8,39 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>LodgeTypes</h4>
+    <h4>Lodges</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.LodgeTypeNaam)
+            @Html.DisplayNameFor(model => model.LodgeNR)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LodgeTypeNaam)
+            @Html.DisplayFor(model => model.LodgeNR)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LodgeOmschrijving)
+            @Html.DisplayNameFor(model => model.LodgeNaam)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LodgeOmschrijving)
+            @Html.DisplayFor(model => model.LodgeNaam)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.aantalpersonen)
+            @Html.DisplayNameFor(model => model.Bezettingsgraad)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.aantalpersonen)
+            @Html.DisplayFor(model => model.Bezettingsgraad)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.prijs)
+            @Html.DisplayNameFor(model => model.LodgeTypes.LodgeTypeNaam)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.prijs)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.url)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.url)
+            @Html.DisplayFor(model => model.LodgeTypes.LodgeTypeNaam)
         </dd>
 
     </dl>

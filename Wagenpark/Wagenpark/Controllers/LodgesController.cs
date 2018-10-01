@@ -10,124 +10,112 @@ using Wagenpark.Models;
 
 namespace Wagenpark.Controllers
 {
-    public class BoekingenController : Controller
+    public class LodgesController : Controller
     {
-        private MijnBoekingenDB db = new MijnBoekingenDB();
-        KunjaDBConnection dbs = new KunjaDBConnection();
+        private KunjaDBConnection db = new KunjaDBConnection();
 
-        // GET: Boekingen
+        // GET: Lodges
         public ActionResult Index()
         {
-
-            var boekingen = (from i in db.Boekingen select i).ToList();
-
-            List<Wagenpark.Models.BoekingenModel> asd = new List<BoekingenModel>();
-
-            foreach (var item in boekingen) {
-                Wagenpark.Models.BoekingenModel boeking = new BoekingenModel();
-                boeking.boekingen = item;
-
-                var gast = from a in dbs.Gasten where a.GastenID == item.gastID select a;
-                boeking.gasten = gast.FirstOrDefault();
-
-                asd.Add(boeking);
-
-            }
-
-            return View(asd);
+            var lodges = db.Lodges.Include(l => l.LodgeTypes);
+            return View(lodges.ToList());
         }
 
-        // GET: Boekingen/Details/5
+        // GET: Lodges/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Boekingen boekingen = db.Boekingen.Find(id);
-            if (boekingen == null)
+            Lodges lodges = db.Lodges.Find(id);
+            if (lodges == null)
             {
                 return HttpNotFound();
             }
-            return View(boekingen);
+            return View(lodges);
         }
 
-        // GET: Boekingen/Create
+        // GET: Lodges/Create
         public ActionResult Create()
         {
+            ViewBag.LodgeTypeID = new SelectList(db.LodgeTypes, "LodgeTypeID", "LodgeTypeNaam");
             return View();
         }
 
-        // POST: Boekingen/Create
+        // POST: Lodges/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Boekingid,gastID,lodgeID,incheckdatum,uitcheckdatum")] Boekingen boekingen)
+        public ActionResult Create([Bind(Include = "LodgeID,LodgeTypeID,LodgeNR,LodgeNaam,Bezettingsgraad")] Lodges lodges)
         {
             if (ModelState.IsValid)
             {
-                db.Boekingen.Add(boekingen);
+                db.Lodges.Add(lodges);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(boekingen);
+            ViewBag.LodgeTypeID = new SelectList(db.LodgeTypes, "LodgeTypeID", "LodgeTypeNaam", lodges.LodgeTypeID);
+            return View(lodges);
         }
 
-        // GET: Boekingen/Edit/5
+        // GET: Lodges/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Boekingen boekingen = db.Boekingen.Find(id);
-            if (boekingen == null)
+            Lodges lodges = db.Lodges.Find(id);
+            if (lodges == null)
             {
                 return HttpNotFound();
             }
-            return View(boekingen);
+            ViewBag.LodgeTypeID = new SelectList(db.LodgeTypes, "LodgeTypeID", "LodgeTypeNaam", lodges.LodgeTypeID);
+            return View(lodges);
         }
 
-        // POST: Boekingen/Edit/5
+        // POST: Lodges/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Boekingid,gastID,lodgeID,incheckdatum,uitcheckdatum")] Boekingen boekingen)
+        public ActionResult Edit([Bind(Include = "LodgeID,LodgeTypeID,LodgeNR,LodgeNaam,Bezettingsgraad")] Lodges lodges)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(boekingen).State = EntityState.Modified;
+                db.Entry(lodges).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(boekingen);
+            ViewBag.LodgeTypeID = new SelectList(db.LodgeTypes, "LodgeTypeID", "LodgeTypeNaam", lodges.LodgeTypeID);
+            return View(lodges);
         }
 
-        // GET: Boekingen/Delete/5
+        // GET: Lodges/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Boekingen boekingen = db.Boekingen.Find(id);
-            if (boekingen == null)
+            Lodges lodges = db.Lodges.Find(id);
+            if (lodges == null)
             {
                 return HttpNotFound();
             }
-            return View(boekingen);
+            return View(lodges);
         }
 
-        // POST: Boekingen/Delete/5
+        // POST: Lodges/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Boekingen boekingen = db.Boekingen.Find(id);
-            db.Boekingen.Remove(boekingen);
+            Lodges lodges = db.Lodges.Find(id);
+            db.Lodges.Remove(lodges);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

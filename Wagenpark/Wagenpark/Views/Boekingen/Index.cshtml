@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Wagenpark.Models.Boekingen>
+﻿@model List<Wagenpark.Models.BoekingenModel>
 
 @{
     ViewBag.Title = "Index";
@@ -22,16 +22,16 @@
     <table class="table" style="background-color: #fff">
         <tr style="background-color: #4b631f">
             <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Gasten.Email)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().boekingen.gastID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Lodges.LodgeNaam)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().boekingen.Boekingid)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.incheckdatum)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().boekingen.incheckdatum)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.uitcheckdatum)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().boekingen.uitcheckdatum)
             </th>
             <th></th>
         </tr>
@@ -39,26 +39,44 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Gasten.Email)
+                    <div data-toggle="modal" data-target="#myModal">
+                        <a>@Html.DisplayFor(modelItem => item.boekingen.gastID)</a>
+                    </div>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Lodges.LodgeNaam)
+                    @Html.DisplayFor(modelItem => item.boekingen.Boekingid)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.incheckdatum)
+                    @Html.DisplayFor(modelItem => item.boekingen.incheckdatum)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.uitcheckdatum)
+                    @Html.DisplayFor(modelItem => item.boekingen.uitcheckdatum)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Boekingid }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Boekingid }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Boekingid })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.boekingen.Boekingid }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.boekingen.Boekingid }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.boekingen.Boekingid })
                 </td>
             </tr>
         }
 
     </table>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                   
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
 
 </body>
 
