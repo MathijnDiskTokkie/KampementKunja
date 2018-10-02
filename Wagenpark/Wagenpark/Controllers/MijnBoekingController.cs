@@ -71,6 +71,18 @@ namespace Wagenpark.Controllers
 
             List<LodgeTypes> lodgeTypes = new List<LodgeTypes>();
 
+
+            /*var boekingen = from a in db.Boekingen select a;
+
+            if (!boekingen.Any())
+            {
+                lodgeTypes = (from lod in db.LodgeTypes select lod).Distinct().ToList();
+                
+
+            }
+            else
+            {*/
+
                 var lodges = (from dbLoges in db.Lodges
                               where (incheckdatum < dbLoges.Boekingen.FirstOrDefault().incheckdatum && uitcheckdatum < dbLoges.Boekingen.FirstOrDefault().incheckdatum) ||
                               (incheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum && uitcheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum) || (dbLoges.Boekingen.FirstOrDefault() == null) 
@@ -80,6 +92,8 @@ namespace Wagenpark.Controllers
                 {
                     lodgeTypes.Add(item.LodgeTypes);
                 }
+
+            //}
 
             lodgeTypes.Distinct().ToList();
 
@@ -101,10 +115,9 @@ namespace Wagenpark.Controllers
                 Boekingen boeken = new Boekingen();
                 boeken.incheckdatum = incheckdatum;
                 boeken.uitcheckdatum = uitcheckdatum;
-                boeken.lodgeID = (from i in db.Lodges where i.LodgeTypeID == lodgetype select i.LodgeID).FirstOrDefault();
+                boeken.lodgeID = lodgetype;
                 boeken.uitcheckdatum =uitcheckdatum;
-            
-
+                boeken.lodgeID = lodgetype;
                 boek.boeking = boeken;
                 boek.lodge = (from i in db.LodgeTypes where i.LodgeTypeID == lodgetype select i).FirstOrDefault();
 
@@ -124,29 +137,54 @@ namespace Wagenpark.Controllers
 
             if (gebruiker.Any()) {
 
-                // kijk welke lodges beschikbaar zijn
                 var lodges = (from dbLoges in db.Lodges
                               where (incheckdatum < dbLoges.Boekingen.FirstOrDefault().incheckdatum && uitcheckdatum < dbLoges.Boekingen.FirstOrDefault().incheckdatum) ||
-                              (incheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum && uitcheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum) || (dbLoges.Boekingen.FirstOrDefault() == null)
+                              (incheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum && uitcheckdatum > dbLoges.Boekingen.FirstOrDefault().uitcheckdatum)
                               select dbLoges).ToList();
+
+                var boekingen = from i in db.Boekingen select i;
+
                 if (lodges.Any())
                 {
-                    // pak van die beschikbare lodges de lodges met het goede type id
-                    var lodgess = lodges.Where(a => a.LodgeTypeID == lodgeid).FirstOrDefault();
+                    var lodgesbeschikbaar = from a in db.Lodges where a.LodgeTypeID == lodgeid select a;
 
-                    // plaats de boeking en verstuur een mail naar de gebruiker
                     Boekingen df = new Boekingen();
                     df.gastID = gebruiker.FirstOrDefault().GastenID;
                     df.incheckdatum = incheckdatum;
                     df.uitcheckdatum = uitcheckdatum;
-                    df.lodgeID = lodgess.LodgeID;
+                    df.lodgeID = lodgesbeschikbaar.FirstOrDefault().LodgeID;
                     db.Boekingen.Add(df);
                     db.SaveChanges();
 
                     EmailVerzenden(df);
 
                     return View();
+
                 }
+                else {
+
+                    if (!boekingen.Any()) {
+
+                        var lodgesbeschikbaar = from a in db.Lodges where a.LodgeTypeID == lodgeid select a;
+
+                        Boekingen df = new Boekingen();
+                        df.gastID = gebruiker.FirstOrDefault().GastenID;
+                        df.incheckdatum = incheckdatum;
+                        df.uitcheckdatum = uitcheckdatum;
+                        df.lodgeID = lodgesbeschikbaar.FirstOrDefault().LodgeID;
+                        db.Boekingen.Add(df);
+                        db.SaveChanges();
+
+                        EmailVerzenden(df);
+
+                        return View();
+
+                    }
+                    // error
+                    return null;
+                }
+                
+
             }
 
             return null;
@@ -173,7 +211,7 @@ namespace Wagenpark.Controllers
 
 
                 //If you need to authenticate
-                client.Credentials = new NetworkCredential("kampementkunja@gmail.com", "Kampementkunja321");
+                client.Credentials = new NetworkCredential("kampementkunja@gmail.com", "Kampementkunja123");
                 MailMessage mailMessage = new MailMessage();
                 MailAddress mailAddress = new MailAddress("noreply@kampementkunja.nl");
                 mailMessage.From = mailAddress;

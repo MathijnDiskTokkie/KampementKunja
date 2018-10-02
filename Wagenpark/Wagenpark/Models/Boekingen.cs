@@ -26,7 +26,7 @@ namespace Wagenpark.Models
                 DateTime start = incheckdatum;
                 DateTime end = uitcheckdatum;
 
-                return ((int)(end - start).TotalDays);
+                return ((int)(end - start).TotalDays) - 1;
 
             }
 

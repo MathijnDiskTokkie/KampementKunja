@@ -13,28 +13,11 @@ namespace Wagenpark.Controllers
     public class BoekingenController : Controller
     {
         private MijnBoekingenDB db = new MijnBoekingenDB();
-        KunjaDBConnection dbs = new KunjaDBConnection();
 
         // GET: Boekingen
         public ActionResult Index()
         {
-
-            var boekingen = (from i in db.Boekingen select i).ToList();
-
-            List<Wagenpark.Models.BoekingenModel> asd = new List<BoekingenModel>();
-
-            foreach (var item in boekingen) {
-                Wagenpark.Models.BoekingenModel boeking = new BoekingenModel();
-                boeking.boekingen = item;
-
-                var gast = from a in dbs.Gasten where a.GastenID == item.gastID select a;
-                boeking.gasten = gast.FirstOrDefault();
-
-                asd.Add(boeking);
-
-            }
-
-            return View(asd);
+            return View(db.Boekingen.ToList());
         }
 
         // GET: Boekingen/Details/5

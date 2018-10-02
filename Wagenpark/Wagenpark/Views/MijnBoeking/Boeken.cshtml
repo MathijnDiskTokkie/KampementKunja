@@ -135,11 +135,8 @@
                 <td>
                     <br />
                  <div style="height: 20px; width: 80px; background-color:lightgreen; color;">
-                     @if (Model.incheckdatum < Model.uitcheckdatum)
-                     {
                     @Html.ActionLink("Boek Lodge", "BoekingBevestigen", new { incheckdatum = Model.incheckdatum, uitcheckdatum = Model.uitcheckdatum, lodgetype = item.LodgeTypeID }) 
-                     }
-                     </div>
+                 </div>
                 </td>
             </tr>
                 }
